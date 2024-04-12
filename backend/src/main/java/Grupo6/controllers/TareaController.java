@@ -1,4 +1,4 @@
-package grupo6.controllers;
+package Grupo6.controllers;
 
 import grupo6.entities.TareaEntity;
 import grupo6.services.TareaService;
