@@ -1,13 +1,13 @@
-package grupo6.laboratorio1;
+package Grupo6.VoluntariadoEmergencias;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Laboratorio1Application {
+public class VoluntariadoEmergenciasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Laboratorio1Application.class, args);
+		SpringApplication.run(VoluntariadoEmergenciasApplication.class, args);
 	}
 
 }

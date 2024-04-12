@@ -1,10 +1,10 @@
-package grupo6.laboratorio1;
+package Grupo6.VoluntariadoEmergencias;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Laboratorio1ApplicationTests {
+class VoluntariadoEmergenciasApplicationTests {
 
 	@Test
 	void contextLoads() {
