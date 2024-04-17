@@ -1,29 +1,34 @@
-package Grupo6.services;
+package Grupo6.VoluntariadoEmergencias.services;
 
-import Grupo6.entities.InstitucionEntity;
-import Grupo6.repositories.InstitucionRepository;
+import Grupo6.VoluntariadoEmergencias.entities.InstitucionEntity;
+import Grupo6.VoluntariadoEmergencias.repositories.InstitucionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Service
+@RestController
 public class InstitucionService {
 
-    @Autowired
-    InstitucionRepository institucionRepository;
+    private final InstitucionRepository institucionRepository;
 
+    InstitucionService(InstitucionRepository institucionRepository){
+        this.institucionRepository = institucionRepository;
+    }
     // crear C
-
-    public InstitucionEntity crearInstitucion( InstitucionEntity institucion){
+    @PostMapping("/save")
+    @ResponseBody
+    public InstitucionEntity crearInstitucion(@RequestBody InstitucionEntity institucion){
         InstitucionEntity inst = institucionRepository.save(institucion);
         return inst;
     }
-
     // get R
-
+    /*
     public List<InstitucionEntity> getAllInstitucions(){
         return institucionRepository.getAll();
     }
@@ -51,5 +56,5 @@ public class InstitucionService {
             throw new Exception(e.getMessage());
         }
     }
-
+    */
 }

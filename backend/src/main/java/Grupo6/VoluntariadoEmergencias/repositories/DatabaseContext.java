@@ -1,4 +1,4 @@
-package Grupo6.repositoryImp;
+package Grupo6.VoluntariadoEmergencias.repositories;
 
 
 import org.springframework.beans.factory.annotation.Value;

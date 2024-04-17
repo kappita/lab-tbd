@@ -1,4 +1,4 @@
-package Grupo6.entities;
+package Grupo6.VoluntariadoEmergencias.entities;
 
 public class DisponibleEntity {
 
