@@ -7,26 +7,26 @@ public class TareaEntity {
     private String nombre;
     private String estado;
 
-    public TareaEntity(Long idTarea, Long idEmergencia, String nombre, String estado) {
-        this.idTarea = idTarea;
-        this.idEmergencia = idEmergencia;
+    public TareaEntity(Long id, Long id_emergencia, String nombre, String estado) {
+        this.idTarea = id;
+        this.idEmergencia = id_emergencia;
         this.nombre = nombre;
         this.estado = estado;
     }
 
-    public Long getIdTarea() {
+    public Long getId() {
         return idTarea;
     }
 
-    public void setIdTarea(Long idTarea) {
+    public void setId(Long idTarea) {
         this.idTarea = idTarea;
     }
 
-    public Long getIdEmergencia() {
+    public Long getId_Emergencia() {
         return idEmergencia;
     }
 
-    public void setIdEmergencia(Long idEmergencia) {
+    public void setId_Emergencia(Long idEmergencia) {
         this.idEmergencia = idEmergencia;
     }
 

@@ -6,45 +6,45 @@ public class RankingEntity {
     private Long idRanking;
     private Long idVoluntario;
     private Long idTarea;
-    private int puntaje;
+    private int ranking;
 
-    public RankingEntity(Long idRanking, Long idVoluntario, Long idTarea, int puntaje) {
-        this.idRanking = idRanking;
-        this.idVoluntario = idVoluntario;
-        this.idTarea = idTarea;
-        this.puntaje = puntaje;
+    public RankingEntity(Long id, Long id_voluntario, Long id_tarea, int ranking) {
+        this.idRanking = id;
+        this.idVoluntario = id_voluntario;
+        this.idTarea = id_tarea;
+        this.ranking = ranking;
     }
 
-    public Long getIdRanking() {
+    public Long getId() {
         return idRanking;
     }
 
-    public void setIdRanking(Long idRanking) {
+    public void setId(Long idRanking) {
         this.idRanking = idRanking;
     }
 
-    public Long getIdVoluntario() {
+    public Long getId_Voluntario() {
         return idVoluntario;
     }
 
-    public void setIdVoluntario(Long idVoluntario) {
+    public void setId_Voluntario(Long idVoluntario) {
         this.idVoluntario = idVoluntario;
     }
 
-    public Long getIdTarea() {
+    public Long getId_Tarea() {
         return idTarea;
     }
 
-    public void setIdTarea(Long idTarea) {
+    public void setId_Tarea(Long idTarea) {
         this.idTarea = idTarea;
     }
 
-    public int getPuntaje() {
-        return puntaje;
+    public int getRanking() {
+        return ranking;
     }
 
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
     }
 
 }

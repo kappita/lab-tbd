@@ -7,9 +7,11 @@ import java.util.List;
 
 
 public interface InstitucionRepository {
-    //List<InstitucionEntity> getAll();
-   // InstitucionEntity findInstitucionById(Long id);
+    List<InstitucionEntity> getAll();
+   List<InstitucionEntity> getById(Long id);
     InstitucionEntity save(InstitucionEntity d);
-    //InstitucionEntity update(InstitucionEntity d);
-    //void delete(Long id);
+
+    String update(InstitucionEntity d,Long id);
+
+    void delete(Long id);
 }

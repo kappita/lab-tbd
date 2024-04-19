@@ -8,20 +8,20 @@ public class VoluntarioEntity {
     private String password;
     private String rut;
 
-    public VoluntarioEntity(Long idVoluntario, String nombre, String email, String password, String rut) {
-        this.idVoluntario = idVoluntario;
+    public VoluntarioEntity(Long id, String nombre, String email, String password, String rut) {
+        this.idVoluntario = id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.rut = rut;
     }
 
-    public Long getIdVoluntario() {
+    public Long getId() {
         return idVoluntario;
     }
 
-    public void setIdVoluntario(Long idVoluntario) {
-        this.idVoluntario = idVoluntario;
+    public void setId(Long id) {
+        this.idVoluntario = id;
     }
 
     public String getNombre() {

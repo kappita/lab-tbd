@@ -6,33 +6,33 @@ public class TareaHabilidadEntity {
     private Long idTarea;
     private Long habilidadId;
 
-    public TareaHabilidadEntity (Long idTareaHab, Long idTarea, Long habilidadId){
-        this.idTareaHab = idTareaHab;
-        this.idTarea = idTarea;
-        this.habilidadId = habilidadId;
+    public TareaHabilidadEntity (Long id, Long id_tarea, Long id_habilidad){
+        this.idTareaHab = id;
+        this.idTarea = id_tarea;
+        this.habilidadId = id_habilidad;
     }
 
-    public Long getIdTareaHab() {
+    public Long getId() {
         return idTareaHab;
     }
 
-    public void setIdTareaHab(Long idTareaHab) {
+    public void setId(Long idTareaHab) {
         this.idTareaHab = idTareaHab;
     }
 
-    public Long getIdTarea() {
+    public Long getId_Tarea() {
         return idTarea;
     }
 
-    public void setIdTarea(Long idTarea) {
+    public void setId_Tarea(Long idTarea) {
         this.idTarea = idTarea;
     }
 
-    public Long getHabilidadId() {
+    public Long getId_Habilidad() {
         return habilidadId;
     }
 
-    public void setHabilidadId(Long habilidadId) {
+    public void setId_Habilidad(Long habilidadId) {
         this.habilidadId = habilidadId;
     }
 }

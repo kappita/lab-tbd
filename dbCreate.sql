@@ -30,18 +30,18 @@ CREATE TABLE Habilidad (
 
 -- Tabla intermedia entre Voluntarios y Habilidades
 CREATE TABLE Vol_Habilidad (
+    id SERIAL PRIMARY KEY,
     id_voluntario INTEGER NOT NULL,
     id_habilidad INTEGER NOT NULL,
-    PRIMARY KEY (id_voluntario, id_habilidad),
     FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id),
     FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id)
 );
 
 -- Tabla intermedia entre Emergencias y Habilidades
 CREATE TABLE Eme_Habilidad (
+    id SERIAL PRIMARY KEY,
     id_emergencia INTEGER NOT NULL,
     id_habilidad INTEGER NOT NULL,
-    PRIMARY KEY (id_emergencia, id_habilidad),
     FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id),
     FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id)
 );
@@ -57,28 +57,28 @@ CREATE TABLE Tarea (
 
 -- Tabla intermedia entre Tareas y Habilidades
 CREATE TABLE Tarea_Habilidad (
+    id SERIAL PRIMARY KEY,
     id_tarea INTEGER NOT NULL,
     id_habilidad INTEGER NOT NULL,
-    PRIMARY KEY (id_tarea, id_habilidad),
     FOREIGN KEY (id_tarea) REFERENCES Tarea(id),
     FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id)
 );
 
 -- Disponibilidad
 CREATE TABLE Disponible (
+    id SERIAL PRIMARY KEY,
     id_voluntario INTEGER NOT NULL,
     id_emergencia INTEGER NOT NULL,
-    PRIMARY KEY (id_voluntario, id_emergencia),
     FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id),
     FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id)
 );
 
 -- Ranking
 CREATE TABLE Ranking (
+	id SERIAL PRIMARY KEY,
     id_voluntario INTEGER NOT NULL,
-    id_emergencia INTEGER NOT NULL,
+    id_tarea INTEGER NOT NULL,
     ranking INTEGER,
-    PRIMARY KEY (id_voluntario, id_emergencia),
     FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id),
-    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id)
+    FOREIGN KEY (id_tarea) REFERENCES Tarea(id)
 );
