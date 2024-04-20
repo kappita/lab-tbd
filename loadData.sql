@@ -1,4 +1,4 @@
--- Insertar datos en la tabla Institucion
+------ Insertar datos en la tabla Institucion
 INSERT INTO Institucion (nombre) VALUES ('ADRA Chile');
 INSERT INTO Institucion (nombre) VALUES ('Colegio Medico Veterinario de Chile');
 INSERT INTO Institucion (nombre) VALUES ('Desafío Levantemos Chile');
@@ -96,14 +96,14 @@ INSERT INTO Disponible (id_voluntario, id_emergencia) VALUES (8, 6);
 INSERT INTO Disponible (id_voluntario, id_emergencia) VALUES (9, 7);
 
 -- Establecer el ranking de los voluntarios para una emergencia
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (1, 1, 1);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (2, 1, 2);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (3, 1, 3);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (4, 2, 1);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (5, 2, 2);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (6, 3, 1);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (7, 4, 1);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (8, 5, 1);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (9, 6, 1);
-INSERT INTO Ranking (id_voluntario, id_emergencia, ranking) VALUES (10, 7, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (1, 1, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (2, 1, 2);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (3, 1, 3);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (4, 2, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (5, 2, 2);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (6, 3, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (7, 4, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (8, 5, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (9, 6, 1);
+INSERT INTO Ranking (id_voluntario, id_tarea, ranking) VALUES (10, 7, 1);
 
