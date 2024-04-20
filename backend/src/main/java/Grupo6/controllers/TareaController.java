@@ -1,7 +1,8 @@
 package Grupo6.controllers;
 
-import grupo6.entities.TareaEntity;
-import grupo6.services.TareaService;
+import Grupo6.entities.TareaEntity;
+import Grupo6.responses.TareaConHabilidades;
+import Grupo6.services.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

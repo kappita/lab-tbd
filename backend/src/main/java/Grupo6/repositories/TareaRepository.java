@@ -1,6 +1,7 @@
-package grupo6.repositories;
+package Grupo6.repositories;
 
-import grupo6.entities.TareaEntity;
+import Grupo6.entities.TareaEmergenciaEntity;
+import Grupo6.entities.TareaEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

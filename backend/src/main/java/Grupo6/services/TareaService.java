@@ -1,7 +1,10 @@
-package grupo6.services;
+package Grupo6.services;
 
-import grupo6.entities.TareaEntity;
-import grupo6.repositories.TareaRepository;
+import Grupo6.entities.TareaEmergenciaEntity;
+import Grupo6.entities.TareaEntity;
+import Grupo6.entities.TareaHabilidadEntity;
+import Grupo6.repositories.TareaRepository;
+import Grupo6.responses.TareaConHabilidades;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;

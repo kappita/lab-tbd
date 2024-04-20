@@ -1,6 +1,6 @@
-package grupo6.repositories;
+package Grupo6.repositories;
 
-import grupo6.entities.VoluntarioEntity;
+import Grupo6.entities.VoluntarioEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

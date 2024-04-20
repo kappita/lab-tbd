@@ -1,7 +1,7 @@
-package grupo6.controllers;
+package Grupo6.controllers;
 
-import grupo6.entities.VoluntarioEntity;
-import grupo6.services.VoluntarioService;
+import Grupo6.entities.VoluntarioEntity;
+import Grupo6.services.VoluntarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

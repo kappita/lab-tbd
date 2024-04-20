@@ -1,7 +1,7 @@
-package grupo6.services;
+package Grupo6.services;
 
-import grupo6.entities.VoluntarioEntity;
-import grupo6.repositories.VoluntarioRepository;
+import Grupo6.entities.VoluntarioEntity;
+import Grupo6.repositories.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
