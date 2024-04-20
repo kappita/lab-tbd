@@ -5,19 +5,19 @@ public class EmergenciaEntity {
     private Long idInstitucion;
     private String nombre;
 
-    public EmergenciaEntity(Long idEmergencia, Long idInstitucion, String nombre){
-        this.idEmergencia = idEmergencia;
-        this.idInstitucion = idInstitucion;
+    public EmergenciaEntity(Long id, Long id_institucion, String nombre){
+        this.idEmergencia = id;
+        this.idInstitucion = id_institucion;
         this.nombre = nombre;
     }
 
-    public Long getIdEmergencia() { return idEmergencia;}
+    public Long getId() { return idEmergencia;}
 
-    public void setIdEmergencia(Long idEmergencia) { this.idEmergencia = idEmergencia;}
+    public void setId(Long idEmergencia) { this.idEmergencia = idEmergencia;}
 
-    public Long getIdInstitucion() { return idInstitucion;}
+    public Long getId_Institucion() { return idInstitucion;}
 
-    public void setIdInstitucion(Long idInstitucion) { this.idInstitucion = idInstitucion;}
+    public void setId_Institucion(Long idInstitucion) { this.idInstitucion = idInstitucion;}
 
     public String getNombre() { return nombre;}
 

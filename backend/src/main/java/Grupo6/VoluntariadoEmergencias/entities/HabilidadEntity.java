@@ -6,17 +6,17 @@ public class HabilidadEntity {
     private String nombre;
     private String descripcion;
 
-    public HabilidadEntity(Long habilidadId, String nombre, String descripcion) {
-        this.habilidadId = habilidadId;
+    public HabilidadEntity(Long id, String nombre, String descripcion) {
+        this.habilidadId = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
-    public Long getHabilidadId() {
+    public Long getId() {
         return habilidadId;
     }
 
-    public void setHabilidadId(Long habilidadId) {
+    public void setId(Long habilidadId) {
         this.habilidadId = habilidadId;
     }
 
