@@ -12,8 +12,8 @@ BEGIN
     WHERE
         ra.operacion IN ('INSERT', 'UPDATE', 'DELETE')
     GROUP BY
-        ra.nombre_usuario;
+        ra.nombre_usuario
+    ORDER BY
+        COUNT(ra.id) DESC; -- Ordenar de mayor a menor el número de operaciones por usuario
 END;
 $$ LANGUAGE plpgsql;
-
--- Test: SELECT * FROM generate_user_query_report();
