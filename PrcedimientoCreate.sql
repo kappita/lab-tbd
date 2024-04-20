@@ -34,3 +34,5 @@ BEGIN
 
 END;
 $$ LANGUAGE plpgsql;
+
+-- PTesteo: SELECT * FROM user_query_report;
