@@ -35,4 +35,4 @@ $$ LANGUAGE plpgsql;
 
 
 -- y luego se consulta el reporte
--- SELECT * FROM usuario_contador_operaciones;
+-- SELECT * FROM usuario_contador_operaciones ORDER BY total_operations DESC;
