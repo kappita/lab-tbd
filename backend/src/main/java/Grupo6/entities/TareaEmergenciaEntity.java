@@ -7,19 +7,19 @@ public class TareaEmergenciaEntity {
     private String nombreEmergencia;
     private Long idTarea;
     private String nombreTarea;
-    private List<HabilidadEntity> habilidades;
+    private String habilidad;
 
     public TareaEmergenciaEntity(Long idEmergencia,
                                  String nombreEmergencia,
                                  Long idTarea,
                                  String nombreTarea,
-                                 List<HabilidadEntity> habilidades) {
+                                 String habilidad) {
 
         this.idEmergencia = idEmergencia;
         this.nombreEmergencia = nombreEmergencia;
         this.idTarea = idTarea;
         this.nombreTarea = nombreTarea;
-        this.habilidades = habilidades;
+        this.habilidad = habilidad;
     }
 
     public Long getIdEmergencia() {
@@ -54,11 +54,11 @@ public class TareaEmergenciaEntity {
         this.nombreTarea = nombreTarea;
     }
 
-    public List<HabilidadEntity> getHabilidades() {
-        return habilidades;
+    public String getHabilidad() {
+        return habilidad;
     }
 
-    public void setHabilidades(List<HabilidadEntity> habilidades) {
-        this.habilidades = habilidades;
+    public void setHabilidades(String habilidad) {
+        this.habilidad = habilidad;
     }
 }
