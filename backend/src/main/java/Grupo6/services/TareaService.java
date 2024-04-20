@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -42,5 +43,25 @@ public class TareaService {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+    }
+
+    public List<TareaConHabilidades> findEligibleTareasByVoluntaryEmail(String email) {
+        // Se obtienen las tareas con emergencia del voluntario
+        List<TareaEmergenciaEntity> tareasEmergencia = tareaRepository.findEligibleTareasByVoluntaryEmail(email);
+
+        List<TareaConHabilidades> tareasConHabilidades = new ArrayList<>();
+
+        // Se unen las habilidades de cada tarea a su tarea
+        // y se guardan en una lista
+        Long idTarea = tareasEmergencia.getFirst().getIdTarea();
+        TareaConHabilidades nuevaTarea = new TareaConHabilidades(tareasEmergencia.getFirst());
+        for (TareaEmergenciaEntity tarea : tareasEmergencia) {
+            if (!idTarea.equals(tarea.getIdTarea())) {
+                tareasConHabilidades.add(nuevaTarea);
+                nuevaTarea = new TareaConHabilidades(tarea);
+            }
+            nuevaTarea.appendHabilidad(tarea.getHabilidad());
+        }
+        return tareasConHabilidades;
     }
 }

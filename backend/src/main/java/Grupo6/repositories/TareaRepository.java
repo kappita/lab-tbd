@@ -11,6 +11,7 @@ public interface TareaRepository {
 
     List<TareaEntity> findAll();
     TareaEntity findByIdTarea(Long id);
+    List<TareaEmergenciaEntity> findEligibleTareasByVoluntaryEmail(String email);
     TareaEntity save(TareaEntity t);
     TareaEntity update(TareaEntity t);
     void delete(Long id);

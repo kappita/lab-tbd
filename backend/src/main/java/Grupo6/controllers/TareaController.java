@@ -46,4 +46,11 @@ public class TareaController {
         var isDeleted = tareaService.deleteTarea(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{email}")
+    public ResponseEntity<List<TareaConHabilidades>> getEligibleTareasByVoluntaryEmail(@PathVariable String email) {
+        List<TareaConHabilidades> tareas = tareaService.findEligibleTareasByVoluntaryEmail(email);
+        return ResponseEntity.ok(tareas);
+
+    }
 }
