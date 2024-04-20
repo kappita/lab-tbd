@@ -17,7 +17,7 @@ public class TareaService {
     private TareaRepository tareaRepository;
 
     public List<TareaEntity> getTareas(){
-        return (List<TareaEntity>) tareaRepository.findAll();
+        return tareaRepository.findAll();
     }
 
     public TareaEntity saveTarea(TareaEntity tarea){
