@@ -1,10 +1,13 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
+import Grupo6.VoluntariadoEmergencias.Responses.TareaConHabilidades;
+import Grupo6.VoluntariadoEmergencias.entities.TareaEmergenciaEntity;
 import Grupo6.VoluntariadoEmergencias.entities.TareaEntity;
 import Grupo6.VoluntariadoEmergencias.repositories.TareaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,5 +44,25 @@ public class TareaService {
 
     public void deleteTarea( Long id){
         tareaRepository.delete(id);
+    }
+
+    public List<TareaConHabilidades> findEligibleTareasByVoluntaryEmail(String email) {
+        // Se obtienen las tareas con emergencia del voluntario
+        List<TareaEmergenciaEntity> tareasEmergencia = tareaRepository.findEligibleTareasByVoluntaryEmail(email);
+
+        List<TareaConHabilidades> tareasConHabilidades = new ArrayList<>();
+
+        // Se unen las habilidades de cada tarea a su tarea
+        // y se guardan en una lista
+        Long idTarea = tareasEmergencia.getFirst().getIdTarea();
+        TareaConHabilidades nuevaTarea = new TareaConHabilidades(tareasEmergencia.getFirst());
+        for (TareaEmergenciaEntity tarea : tareasEmergencia) {
+            if (!idTarea.equals(tarea.getIdTarea())) {
+                tareasConHabilidades.add(nuevaTarea);
+                nuevaTarea = new TareaConHabilidades(tarea);
+            }
+            nuevaTarea.appendHabilidad(tarea.getHabilidad());
+        }
+        return tareasConHabilidades;
     }
 }
