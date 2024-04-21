@@ -51,7 +51,7 @@ public class TareaController {
         tareaService.deleteTarea(id);
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("tareas/postulables/{email}")
     public ResponseEntity<List<TareaConHabilidades>> getEligibleTareasByVoluntaryEmail(@PathVariable String email) {
         List<TareaConHabilidades> tareas = tareaService.findEligibleTareasByVoluntaryEmail(email);
         return ResponseEntity.ok(tareas);
