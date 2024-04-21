@@ -1,7 +1,10 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
+import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
+import Grupo6.VoluntariadoEmergencias.repositories.HabilidadRepository;
 import Grupo6.VoluntariadoEmergencias.repositories.VoluntarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,4 +47,12 @@ public class VoluntarioService {
     public void deleteVoluntario(Long id){
         voluntarioRepository.delete(id);
     }
+
+    @Autowired
+    private HabilidadRepository habilidadRepository;
+    public List<HabilidadEntity> getAllHabilidades() {
+        return habilidadRepository.findAll();
+    }
+
+
 }
