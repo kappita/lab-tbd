@@ -1,11 +1,12 @@
 package Grupo6.VoluntariadoEmergencias.entities;
 
 public class TareaEmergenciaEntity {
-    private Long idEmergencia;
-    private String nombreEmergencia;
-    private Long idTarea;
-    private String nombreTarea;
-    private String habilidad;
+    private Long id_emergencia;
+    private String nombre_emergencia;
+    private Long id_tarea;
+    private String nombre_tarea;
+    private Long id_habilidad;
+    private String nombre_habilidad;
 
     public TareaEmergenciaEntity(Long idEmergencia,
                                  String nombreEmergencia,
@@ -13,50 +14,58 @@ public class TareaEmergenciaEntity {
                                  String nombreTarea,
                                  String habilidad) {
 
-        this.idEmergencia = idEmergencia;
-        this.nombreEmergencia = nombreEmergencia;
-        this.idTarea = idTarea;
-        this.nombreTarea = nombreTarea;
-        this.habilidad = habilidad;
+        this.id_emergencia = idEmergencia;
+        this.nombre_emergencia = nombreEmergencia;
+        this.id_tarea = idTarea;
+        this.nombre_tarea = nombreTarea;
+        this.nombre_habilidad = habilidad;
     }
 
     public Long getIdEmergencia() {
-        return idEmergencia;
+        return id_emergencia;
     }
 
     public void setIdEmergencia(Long idEmergencia) {
-        this.idEmergencia = idEmergencia;
+        this.id_emergencia = idEmergencia;
     }
 
     public String getNombreEmergencia() {
-        return nombreEmergencia;
+        return nombre_emergencia;
     }
 
     public void setNombreEmergencia(String nombreEmergencia) {
-        this.nombreEmergencia = nombreEmergencia;
+        this.nombre_emergencia = nombreEmergencia;
     }
 
     public Long getIdTarea() {
-        return idTarea;
+        return id_tarea;
     }
 
     public void setIdTarea(Long idTarea) {
-        this.idTarea = idTarea;
+        this.id_tarea = idTarea;
     }
 
-    public String getNombreTarea() {
-        return nombreTarea;
+    public String getNombre_tarea() {
+        return nombre_tarea;
     }
 
-    public void setNombreTarea(String nombreTarea) {
-        this.nombreTarea = nombreTarea;
+    public void setNombre_tarea(String nombre_tarea) {
+        this.nombre_tarea = nombre_tarea;
     }
 
-    public String getHabilidad() {
-        return habilidad;
+    public Long getId_habilidad() {
+        return id_habilidad;
     }
 
-    public void setHabilidades(String habilidad) {
-        this.habilidad = habilidad;
+    public void setId_habilidad(Long id_habilidad) {
+        this.id_habilidad = id_habilidad;
+    }
+
+    public String getNombre_habilidad() {
+        return nombre_habilidad;
+    }
+
+    public void setNombre_habilidad(String habilidad) {
+        this.nombre_habilidad = habilidad;
     }
 }

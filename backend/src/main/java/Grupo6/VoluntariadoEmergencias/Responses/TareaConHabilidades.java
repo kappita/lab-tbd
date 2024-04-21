@@ -24,7 +24,7 @@ public class TareaConHabilidades {
         this.idEmergencia = tareaEmergenciaEntity.getIdEmergencia();
         this.nombreEmergencia = tareaEmergenciaEntity.getNombreEmergencia();
         this.idTarea = tareaEmergenciaEntity.getIdTarea();
-        this.nombreTarea = tareaEmergenciaEntity.getNombreTarea();
+        this.nombreTarea = tareaEmergenciaEntity.getNombre_tarea();
         this.habilidades = new ArrayList<>();
     }
 

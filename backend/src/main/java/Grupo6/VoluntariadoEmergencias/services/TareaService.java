@@ -59,10 +59,12 @@ public class TareaService {
         for (TareaEmergenciaEntity tarea : tareasEmergencia) {
             if (!idTarea.equals(tarea.getIdTarea())) {
                 tareasConHabilidades.add(nuevaTarea);
+                idTarea = tarea.getIdTarea();
                 nuevaTarea = new TareaConHabilidades(tarea);
             }
-            nuevaTarea.appendHabilidad(tarea.getHabilidad());
+            nuevaTarea.appendHabilidad(tarea.getNombre_habilidad());
         }
+        tareasConHabilidades.add(nuevaTarea);
         return tareasConHabilidades;
     }
 }
