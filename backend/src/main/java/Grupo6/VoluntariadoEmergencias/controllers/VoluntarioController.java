@@ -1,5 +1,6 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
+import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 
 import Grupo6.VoluntariadoEmergencias.services.VoluntarioService;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class VoluntarioController {
 
@@ -48,6 +50,12 @@ public class VoluntarioController {
     @DeleteMapping("/voluntarios/delete/{id}")
     public void deleteVoluntario(@PathVariable Long id){
         voluntarioService.deleteVoluntario(id);
+    }
+
+    @GetMapping("/habilidades")
+    @ResponseBody
+    public List<HabilidadEntity> getHabilidades() {
+        return voluntarioService.getAllHabilidades();
     }
 
 }
