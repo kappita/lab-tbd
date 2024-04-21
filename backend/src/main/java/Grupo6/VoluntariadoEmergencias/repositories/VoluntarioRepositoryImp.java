@@ -17,10 +17,9 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
     @Override
     public VoluntarioEntity save(VoluntarioEntity voluntario) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Voluntario (id,nombre,email,password,rut) " +
-                    "VALUES (:id, :nombre,:email,:password,:rut)";
+            String sql = "INSERT INTO Voluntario (nombre,email,password,rut) " +
+                    "VALUES (:nombre,:email,:password,:rut)";
             conn.createQuery(sql)
-                    .addParameter("id", voluntario.getId())
                     .addParameter("nombre", voluntario.getNombre())
                     .addParameter("email", voluntario.getEmail())
                     .addParameter("password", voluntario.getPassword())

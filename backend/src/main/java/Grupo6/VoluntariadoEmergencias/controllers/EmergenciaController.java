@@ -1,7 +1,9 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
 import Grupo6.VoluntariadoEmergencias.entities.EmergenciaEntity;
-import Grupo6.VoluntariadoEmergencias.repositories.EmergenciaRepository;
+
+import Grupo6.VoluntariadoEmergencias.services.EmergenciaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,29 +12,26 @@ import java.util.List;
 
 public class EmergenciaController {
 
-    private final EmergenciaRepository emergenciaRepository;
-
-    EmergenciaController(EmergenciaRepository emergenciaRepository){
-        this.emergenciaRepository = emergenciaRepository;
-    }
+    @Autowired
+    EmergenciaService emergenciaService;
     // crear C
     @PostMapping("/emergencias/save")
     @ResponseBody
     public EmergenciaEntity crearEmergencia(@RequestBody EmergenciaEntity emergencia){
-        EmergenciaEntity newEmergencia = emergenciaRepository.save(emergencia);
+        EmergenciaEntity newEmergencia = emergenciaService.crearEmergencia(emergencia);
         return newEmergencia;
     }
     // get R
     @GetMapping("/emergencias/getAll")
     @ResponseBody
     public List<EmergenciaEntity> getAllEmergenciaes(){
-        return emergenciaRepository.getAll();
+        return emergenciaService.getAllEmergenciaes();
     }
     //get by
     @GetMapping("/emergencias/getById/{id}")
     @ResponseBody
     public List<EmergenciaEntity> getEmergenciaById(@PathVariable Long id){
-        return emergenciaRepository.getById(id);
+        return emergenciaService.getEmergenciaById(id);
     }
 
 
@@ -40,14 +39,14 @@ public class EmergenciaController {
     @PutMapping("/emergencias/update/{id}")
     @ResponseBody
     public String updateNombreEmergencia(@RequestBody EmergenciaEntity emergencia, @PathVariable Long id){
-        String retorno = emergenciaRepository.updateNombreEmergencia(emergencia,id);
+        String retorno = emergenciaService.updateNombreEmergencia(emergencia,id);
         return retorno;
     }
 
     // borrar D
     @DeleteMapping("/emergencias/delete/{id}")
     public void deleteEmergencia(@PathVariable Long id){
-        emergenciaRepository.delete(id);
+        emergenciaService.deleteEmergencia(id);
     }
 
 }

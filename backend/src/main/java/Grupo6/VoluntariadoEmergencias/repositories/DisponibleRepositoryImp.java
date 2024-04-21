@@ -18,9 +18,8 @@ public class DisponibleRepositoryImp implements DisponibleRepository{
     public DisponibleEntity save(DisponibleEntity disponible) {
         try (Connection conn = sql2o.open()) {
             String sql = "INSERT INTO Disponible (id,id_voluntario,id_emergencia) " +
-                    "VALUES (:id_disponible, :id_voluntario, :id_emergencia)";
+                    "VALUES (:id_voluntario, :id_emergencia)";
             conn.createQuery(sql)
-                    .addParameter("id_disponible", disponible.getId())
                     .addParameter("id_voluntario", disponible.getId_voluntario())
                     .addParameter("id_emergencia", disponible.getId_emergencia())
                     .executeUpdate();

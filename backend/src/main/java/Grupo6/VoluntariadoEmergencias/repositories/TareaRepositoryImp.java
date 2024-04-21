@@ -17,10 +17,9 @@ public class TareaRepositoryImp implements TareaRepository{
     @Override
     public TareaEntity save(TareaEntity tarea) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Tarea (id,id_emergencia,nombre,estado) " +
-                    "VALUES (:id_tarea, :id_emergencia,:nombre,:estado)";
+            String sql = "INSERT INTO Tarea (id_emergencia,nombre,estado) " +
+                    "VALUES (:id_emergencia,:nombre,:estado)";
             conn.createQuery(sql)
-                    .addParameter("id_tarea", tarea.getId())
                     .addParameter("id_emergencia", tarea.getId_Emergencia())
                     .addParameter("nombre", tarea.getNombre())
                     .addParameter("estado", tarea.getEstado())

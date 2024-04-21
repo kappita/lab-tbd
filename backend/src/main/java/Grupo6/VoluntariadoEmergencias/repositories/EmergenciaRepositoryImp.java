@@ -17,10 +17,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
     @Override
     public EmergenciaEntity save(EmergenciaEntity emergencia) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Emergencia (id,id_institucion,nombre) " +
-                    "VALUES (:id_emergencia, :id_institucion,:nombre)";
+            String sql = "INSERT INTO Emergencia (id_institucion,nombre) " +
+                    "VALUES ( :id_institucion,:nombre)";
             conn.createQuery(sql)
-                    .addParameter("id_emergencia", emergencia.getId())
                     .addParameter("id_institucion", emergencia.getId_Institucion())
                     .addParameter("nombre", emergencia.getNombre())
                     .executeUpdate();

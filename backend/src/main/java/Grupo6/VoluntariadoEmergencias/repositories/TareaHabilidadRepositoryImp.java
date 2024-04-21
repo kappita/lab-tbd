@@ -17,10 +17,9 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
     @Override
     public TareaHabilidadEntity save(TareaHabilidadEntity tareaHabilidad) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO tarea_habilidad (id,id_tarea,id_habilidad) " +
-                    "VALUES (:id_tareaHabilidad, :id_tarea,:id_habilidad)";
+            String sql = "INSERT INTO tarea_habilidad (id_tarea,id_habilidad) " +
+                    "VALUES (:id_tarea,:id_habilidad)";
             conn.createQuery(sql)
-                    .addParameter("id_tareaHabilidad", tareaHabilidad.getId())
                     .addParameter("id_tarea", tareaHabilidad.getId_Tarea())
                     .addParameter("id_habilidad", tareaHabilidad.getId_Habilidad())
                     .executeUpdate();

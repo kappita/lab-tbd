@@ -1,7 +1,8 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
-import Grupo6.VoluntariadoEmergencias.repositories.VoluntarioRepository;
+
+import Grupo6.VoluntariadoEmergencias.services.VoluntarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,29 +10,29 @@ import java.util.List;
 @RestController
 public class VoluntarioController {
 
-    private final VoluntarioRepository voluntarioRepository;
+    private final VoluntarioService voluntarioService;
 
-    VoluntarioController(VoluntarioRepository voluntarioRepository){
-        this.voluntarioRepository = voluntarioRepository;
+    VoluntarioController(VoluntarioService voluntarioService){
+        this.voluntarioService = voluntarioService;
     }
     // crear C
     @PostMapping("/voluntarios/save")
     @ResponseBody
     public VoluntarioEntity crearVoluntario(@RequestBody VoluntarioEntity voluntario){
-        VoluntarioEntity voluntario1 = voluntarioRepository.save(voluntario);
+        VoluntarioEntity voluntario1 = voluntarioService.crearVoluntario(voluntario);
         return voluntario1;
     }
     // get R
     @GetMapping("/voluntarios/getAll")
     @ResponseBody
     public List<VoluntarioEntity> getAllVoluntarios(){
-        return voluntarioRepository.getAll();
+        return voluntarioService.getAllVoluntarios();
     }
     //get by
     @GetMapping("/voluntarios/getById/{id}")
     @ResponseBody
     public List<VoluntarioEntity> getVoluntarioById(@PathVariable Long id){
-        return voluntarioRepository.getById(id);
+        return voluntarioService.getVoluntarioById(id);
     }
 
 
@@ -39,14 +40,14 @@ public class VoluntarioController {
     @PutMapping("/voluntarios/update/{id}")
     @ResponseBody
     public String updateVoluntario(@RequestBody VoluntarioEntity voluntario, @PathVariable Long id){
-        String retorno = voluntarioRepository.update(voluntario,id);
+        String retorno = voluntarioService.updateVoluntario(voluntario,id);
         return retorno;
     }
 
     // borrar D
     @DeleteMapping("/voluntarios/delete/{id}")
     public void deleteVoluntario(@PathVariable Long id){
-        voluntarioRepository.delete(id);
+        voluntarioService.deleteVoluntario(id);
     }
 
 }

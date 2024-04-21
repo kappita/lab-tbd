@@ -17,10 +17,9 @@ public class RankingRepositoryImp implements RankingRepository{
     @Override
     public RankingEntity save(RankingEntity ranking) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Ranking (id,id_voluntario,id_tarea,ranking) " +
-                    "VALUES (:id_ranking, :id_voluntario, :id_tarea, :ranking)";
+            String sql = "INSERT INTO Ranking (id_voluntario,id_tarea,ranking) " +
+                    "VALUES (:id_voluntario, :id_tarea, :ranking)";
             conn.createQuery(sql)
-                    .addParameter("id_ranking", ranking.getId())
                     .addParameter("id_voluntario", ranking.getId_Voluntario())
                     .addParameter("id_tarea", ranking.getId_Tarea())
                     .addParameter("ranking", ranking.getRanking())

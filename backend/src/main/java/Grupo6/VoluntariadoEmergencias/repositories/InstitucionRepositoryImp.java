@@ -17,13 +17,11 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
     @Override
     public InstitucionEntity save(InstitucionEntity institucion) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Institucion (id,nombre) " +
-                    "VALUES (:id_institucion, :nombre)";
+            String sql = "INSERT INTO Institucion (nombre) " +
+                    "VALUES (:nombre)";
             conn.createQuery(sql)
-                    .addParameter("id_institucion", institucion.getId())
                     .addParameter("nombre", institucion.getNombre())
                     .executeUpdate();
-
             return institucion;
         } catch (Exception e) {
             System.out.println(e.getMessage());

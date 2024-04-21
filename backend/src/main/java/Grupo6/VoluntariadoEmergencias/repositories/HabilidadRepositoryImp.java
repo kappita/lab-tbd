@@ -17,10 +17,9 @@ public class HabilidadRepositoryImp implements HabilidadRepository{
     @Override
     public HabilidadEntity save(HabilidadEntity habilidad) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Habilidad (id,nombre,descripcion) " +
-                    "VALUES (:id_habilidad, :nombre, :descripcion)";
+            String sql = "INSERT INTO Habilidad (nombre,descripcion) " +
+                    "VALUES ( :nombre, :descripcion)";
             conn.createQuery(sql)
-                    .addParameter("id_habilidad", habilidad.getId())
                     .addParameter("nombre", habilidad.getNombre())
                     .addParameter("descripcion", habilidad.getDescripcion())
                     .executeUpdate();

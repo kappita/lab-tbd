@@ -1,7 +1,9 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
 import Grupo6.VoluntariadoEmergencias.entities.RankingEntity;
-import Grupo6.VoluntariadoEmergencias.repositories.RankingRepository;
+
+import Grupo6.VoluntariadoEmergencias.services.RankingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,41 +12,38 @@ import java.util.List;
 
 public class RankingController {
 
-    private final RankingRepository rankingRepository;
+   @Autowired
+    RankingService rankingService;
 
-    RankingController(RankingRepository rankingRepository){
-        this.rankingRepository = rankingRepository;
-    }
-    // crear C
     @PostMapping("/ranking/save")
     @ResponseBody
     public RankingEntity crearRanking(@RequestBody RankingEntity ranking){
-        RankingEntity inst = rankingRepository.save(ranking);
+        RankingEntity inst = rankingService.crearRanking(ranking);
         return inst;
     }
     // get R
     @GetMapping("/ranking/getAll")
     @ResponseBody
     public List<RankingEntity> getAllRankinges(){
-        return rankingRepository.getAll();
+        return rankingService.getAllRankinges();
     }
     //get by
     @GetMapping("/ranking/getById/{id}")
     @ResponseBody
     public List<RankingEntity> getRankingById(@PathVariable Long id){
-        return rankingRepository.getById(id);
+        return rankingService.getRankingById(id);
     }
 
     @GetMapping("/ranking/getByIdVoluntario/{id}")
     @ResponseBody
     public List<RankingEntity> getRankingByIdVoluntario(@PathVariable Long id){
-        return rankingRepository.getByIdVoluntario(id);
+        return rankingService.getRankingByIdVoluntario(id);
     }
 
     @GetMapping("/ranking/getByIdTarea/{id}")
     @ResponseBody
     public List<RankingEntity> getRankingByIdTarea(@PathVariable Long id){
-        return rankingRepository.getByIdTarea(id);
+        return rankingService.getRankingByIdTarea(id);
     }
 
 
@@ -52,14 +51,14 @@ public class RankingController {
     @PutMapping("/ranking/updatePosicionRanking/{id}")
     @ResponseBody
     public String updateRanking(@RequestBody RankingEntity ranking, @PathVariable Long id){
-        String retorno = rankingRepository.updatePosicionRanking(ranking,id);
+        String retorno = rankingService.updateRanking(ranking,id);
         return retorno;
     }
 
     // borrar D
     @DeleteMapping("/ranking/delete/{id}")
     public void deleteRanking(@PathVariable Long id){
-        rankingRepository.delete(id);
+        rankingService.deleteRanking(id);
     }
 
 }
