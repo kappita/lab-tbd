@@ -44,4 +44,8 @@ public class HabilidadService {
         habilidadRepository.delete(id);
     }
 
+    public List<HabilidadEntity> getHabilidadByVoluntario(String email) {
+        return habilidadRepository.getByEmailVoluntario(email);
+    }
+
 }

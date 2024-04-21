@@ -10,4 +10,5 @@ public interface HabilidadRepository {
     HabilidadEntity save(HabilidadEntity habilidad);
     String updateNombreHabilidad(HabilidadEntity habilidad,Long id);
     void delete(Long id);
+    List<HabilidadEntity> getByEmailVoluntario(String email);
 }

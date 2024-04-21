@@ -81,4 +81,16 @@ public class HabilidadRepositoryImp implements HabilidadRepository{
         }
 
     }
+
+    @Override
+    public List<HabilidadEntity> getByEmailVoluntario(String email) {
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery("SELECT h.* FROM Habilidad h INNER JOIN Vol_habilidad vh ON h.id = vh.id_habilidad INNER JOIN Voluntario v ON vh.id_voluntario = v.id WHERE v.email = :email")
+                    .addParameter("email", email)
+                    .executeAndFetch(HabilidadEntity.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

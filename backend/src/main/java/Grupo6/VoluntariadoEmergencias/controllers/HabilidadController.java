@@ -49,4 +49,9 @@ public class HabilidadController {
         habilidadService.deleteHabilidad(id);
     }
 
+
+    @GetMapping("/habilidades/voluntario/{email}")
+    public List<HabilidadEntity> getHabilidadByEmail(@PathVariable String email){
+        return habilidadService.getHabilidadByVoluntario(email);
+    }
 }
