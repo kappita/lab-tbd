@@ -1,5 +1,6 @@
 package Grupo6.VoluntariadoEmergencias.repositories;
 
+import Grupo6.VoluntariadoEmergencias.entities.TareaEmergenciaEntity;
 import Grupo6.VoluntariadoEmergencias.entities.TareaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -82,4 +83,16 @@ public class TareaRepositoryImp implements TareaRepository{
         }
 
     }
+
+    @Override
+    public List<TareaEmergenciaEntity> findEligibleTareasByVoluntaryEmail(String email) {
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery("SELECT * FROM get_voluntary_eligible_tasks_by_email(:email)")
+                    .addParameter("email", email)
+                    .executeAndFetch(TareaEmergenciaEntity.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    };
 }
