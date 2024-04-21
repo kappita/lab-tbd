@@ -1,9 +1,11 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
+import Grupo6.VoluntariadoEmergencias.Responses.TareaConHabilidades;
 import Grupo6.VoluntariadoEmergencias.entities.TareaEntity;
 
 import Grupo6.VoluntariadoEmergencias.services.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,4 +51,10 @@ public class TareaController {
         tareaService.deleteTarea(id);
     }
 
+    @GetMapping("/{email}")
+    public ResponseEntity<List<TareaConHabilidades>> getEligibleTareasByVoluntaryEmail(@PathVariable String email) {
+        List<TareaConHabilidades> tareas = tareaService.findEligibleTareasByVoluntaryEmail(email);
+        return ResponseEntity.ok(tareas);
+
+    }
 }
