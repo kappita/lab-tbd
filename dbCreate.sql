@@ -126,7 +126,7 @@ BEGIN
     ),
         tasks_with_emergency AS (
             SELECT ts.*,
-                   e.nombre nombre_emergencia
+                   e.nombre nombre_emergencia,
                    e.activa activa
 
             FROM tasks_with_skills ts
