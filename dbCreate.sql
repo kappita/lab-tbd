@@ -18,6 +18,7 @@ CREATE TABLE Emergencia (
     id SERIAL PRIMARY KEY,
     id_institucion INTEGER NOT NULL,
     nombre VARCHAR(255) NOT NULL,
+    activa BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (id_institucion) REFERENCES Institucion(id)
 );
 
