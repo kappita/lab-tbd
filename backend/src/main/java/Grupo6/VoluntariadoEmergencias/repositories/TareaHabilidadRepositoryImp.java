@@ -58,7 +58,7 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
     @Override
     public String updateTareaAsignada(TareaHabilidadEntity tareaHabilidad, Long id){
         try(Connection conn = sql2o.open()){
-            String updateSql = "update TareaHabilidad set id_tarea=:nombre WHERE id=:id";
+            String updateSql = "update tarea_habilidad set id_tarea=:id_tarea WHERE id=:id";
             conn.createQuery(updateSql)
                     .addParameter("id", id)
                     .addParameter("id_tarea", tareaHabilidad.getId_Tarea())

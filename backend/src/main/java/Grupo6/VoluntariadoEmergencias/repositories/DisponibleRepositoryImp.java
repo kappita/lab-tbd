@@ -17,7 +17,7 @@ public class DisponibleRepositoryImp implements DisponibleRepository{
     @Override
     public DisponibleEntity save(DisponibleEntity disponible) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO Disponible (id,id_voluntario,id_emergencia) " +
+            String sql = "INSERT INTO disponible (id_voluntario,id_emergencia) " +
                     "VALUES (:id_voluntario, :id_emergencia)";
             conn.createQuery(sql)
                     .addParameter("id_voluntario", disponible.getId_voluntario())

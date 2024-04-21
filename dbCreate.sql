@@ -34,8 +34,8 @@ CREATE TABLE Vol_Habilidad (
     id SERIAL PRIMARY KEY,
     id_voluntario INTEGER NOT NULL,
     id_habilidad INTEGER NOT NULL,
-    FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id),
-    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id)
+    FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id) ON DELETE CASCADE
 );
 
 -- Tabla intermedia entre Emergencias y Habilidades
@@ -43,8 +43,8 @@ CREATE TABLE Eme_Habilidad (
     id SERIAL PRIMARY KEY,
     id_emergencia INTEGER NOT NULL,
     id_habilidad INTEGER NOT NULL,
-    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id),
-    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id)
+    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id) ON DELETE CASCADE
 );
 
 -- Tareas
@@ -53,7 +53,7 @@ CREATE TABLE Tarea (
     id_emergencia INTEGER NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     estado VARCHAR(50), -- 'pendiente', 'en curso', 'completada'
-    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id)
+    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id) ON DELETE CASCADE
 );
 
 -- Tabla intermedia entre Tareas y Habilidades
@@ -61,8 +61,8 @@ CREATE TABLE Tarea_Habilidad (
     id SERIAL PRIMARY KEY,
     id_tarea INTEGER NOT NULL,
     id_habilidad INTEGER NOT NULL,
-    FOREIGN KEY (id_tarea) REFERENCES Tarea(id),
-    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id)
+    FOREIGN KEY (id_tarea) REFERENCES Tarea(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id) ON DELETE CASCADE
 );
 
 -- Disponibilidad
@@ -70,8 +70,8 @@ CREATE TABLE Disponible (
     id SERIAL PRIMARY KEY,
     id_voluntario INTEGER NOT NULL,
     id_emergencia INTEGER NOT NULL,
-    FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id),
-    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id)
+    FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_emergencia) REFERENCES Emergencia(id) ON DELETE CASCADE
 );
 
 -- Ranking
@@ -80,8 +80,8 @@ CREATE TABLE Ranking (
     id_voluntario INTEGER NOT NULL,
     id_tarea INTEGER NOT NULL,
     ranking INTEGER,
-    FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id),
-    FOREIGN KEY (id_tarea) REFERENCES Tarea(id)
+    FOREIGN KEY (id_voluntario) REFERENCES Voluntario(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_tarea) REFERENCES Tarea(id) ON DELETE CASCADE
 );
 
 

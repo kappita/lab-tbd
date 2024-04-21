@@ -4,11 +4,14 @@ public class EmergenciaEntity {
     private Long idEmergencia;
     private Long idInstitucion;
     private String nombre;
+    private boolean activa;
 
-    public EmergenciaEntity(Long id, Long id_institucion, String nombre){
+    public EmergenciaEntity(Long id, Long id_institucion, String nombre, boolean activa){
         this.idEmergencia = id;
         this.idInstitucion = id_institucion;
         this.nombre = nombre;
+        this.activa = activa;
+
     }
 
     public Long getId() { return idEmergencia;}
@@ -22,5 +25,12 @@ public class EmergenciaEntity {
     public String getNombre() { return nombre;}
 
     public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public boolean getActiva(){return activa; }
+
+    public void setActiva(boolean newActiva){this.activa=newActiva; }
+
+
+
 }
 
