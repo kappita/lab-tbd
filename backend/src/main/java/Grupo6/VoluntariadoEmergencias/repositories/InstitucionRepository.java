@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface InstitucionRepository {
     List<InstitucionEntity> getAll();
-   List<InstitucionEntity> getById(Long id);
+    List<InstitucionEntity> getById(Long id);
     InstitucionEntity save(InstitucionEntity d);
 
     String update(InstitucionEntity d,Long id);

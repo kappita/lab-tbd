@@ -19,9 +19,11 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
     public InstitucionEntity save(InstitucionEntity institucion) {
         try (Connection conn = sql2o.open()) {
             String sql = "INSERT INTO Institucion (nombre) " +
-                    "VALUES (:nombre)";
+                    "VALUES (:nombre, :email, :password)";
             conn.createQuery(sql)
                     .addParameter("nombre", institucion.getNombre())
+                    .addParameter("email", institucion.getEmail())
+                    .addParameter("password", institucion.getPassword())
                     .executeUpdate();
             return institucion;
         } catch (Exception e) {
@@ -45,7 +47,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
     public List<InstitucionEntity> getById(Long id) {
         try(Connection conn = sql2o.open()){
             return conn.createQuery("select * from Institucion where id= :id")
-                    .addParameter("id",id)
+                    .addParameter("id", id)
                     .executeAndFetch(InstitucionEntity.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
