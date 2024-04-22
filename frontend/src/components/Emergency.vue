@@ -6,13 +6,13 @@
 <template>
   <div class="card">
     <div class="emergency">
-      Nombre: {{ data.emergency_name }}
+      Nombre: {{ data.nombre_emergencia }}
     </div>
     <div class="skills">
       <p>Habilidades:</p>
-      <p v-for="skill in data.skills"> - {{ skill }}</p>
+      <p> - {{ data.nombre_habilidad }}</p>
     </div>
-    <button @click="$emit('sign-in', data.emergency_id)">
+    <button @click="$emit('sign-in', data.id_emergencia)">
       +
     </button>
   </div>
@@ -27,5 +27,9 @@
     display: grid;
     grid-template-rows: repeat(1, minmax(0, 1fr));
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .emergency {
+    margin-right: 20px;
   }
 </style>

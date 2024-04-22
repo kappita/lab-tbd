@@ -1,11 +1,22 @@
 <script setup>
   import Emergency from '@/components/Emergency.vue';
+  import axios from 'axios';
   import { ref } from 'vue';
   const email = ref("")
-  const emergencies = [
-    {emergency_name: "El pepe", emergency_id: 10, skills: ["bañarse", "ser sigma"]},
-    {emergency_name: "Ete sech", emergency_id: 11, skills: ["Ser skibidi", "ser Toilet"]}
-  ]
+  const emergencies = ref([])
+  axios.get(`http://localhost:8080/emergencias_habilidad/getEmergencias`).then( e=> {
+    emergencies.value = e.data
+  })
+
+
+  const agregar = (id_emergencia) => {
+    axios.post(`http://localhost:8080/agregar_voluntario_disponible/${id_emergencia}/${email.value}`).then( e=> {
+      console.log(e.data)
+  })
+  }
+
+  
+  
 </script>
 
 <template>
@@ -24,11 +35,11 @@
         <h2>
           Ingresa tu correo electrónico para inscribirte en emergencias:
         </h2>
-        <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" name="email" id="" v-model="email">
+        <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" name="email" v-model="email">
       </div>
 
       <div class="emergencies">
-        <Emergency v-for="e in emergencies" :data="e"></Emergency>
+        <Emergency v-for="e in emergencies" :data="e" @sign-in="n => agregar(n)"></Emergency>
       </div>
     </div>
 
