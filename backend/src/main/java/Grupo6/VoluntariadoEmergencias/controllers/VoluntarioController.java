@@ -52,7 +52,7 @@ public class VoluntarioController {
         voluntarioService.deleteVoluntario(id);
     }
 
-    @GetMapping("/habilidades")
+    @GetMapping("/voluntarios/habilidades")
     @ResponseBody
     public List<HabilidadEntity> getHabilidades() {
         return voluntarioService.getAllHabilidades();
