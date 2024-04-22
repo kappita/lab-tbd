@@ -1,6 +1,7 @@
 package Grupo6.VoluntariadoEmergencias.repositories;
 
 import Grupo6.VoluntariadoEmergencias.entities.InstitucionEntity;
+import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface InstitucionRepository {
     InstitucionEntity save(InstitucionEntity d);
 
     String update(InstitucionEntity d,Long id);
-
+    VoluntarioEntity getByEmail(String email);
     void delete(Long id);
 }

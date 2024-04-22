@@ -1,6 +1,7 @@
 package Grupo6.VoluntariadoEmergencias.repositories;
 
 import Grupo6.VoluntariadoEmergencias.entities.InstitucionEntity;
+import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -77,6 +78,16 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    public VoluntarioEntity getByEmail(String email) {
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("select * from Institucion where email = :email")
+                    .addParameter("email", email)
+                    .executeAndFetchFirst(VoluntarioEntity.class);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

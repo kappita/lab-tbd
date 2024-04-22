@@ -1,7 +1,12 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
+import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.InstitucionEntity;
+import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 import Grupo6.VoluntariadoEmergencias.repositories.InstitucionRepository;
+import Grupo6.VoluntariadoEmergencias.repositories.JWTMiddlewareRepositoryImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +15,9 @@ import java.util.List;
 @Service
 public class InstitucionService {
     private final InstitucionRepository institucionRepository;
+
+    @Autowired
+    private JWTMiddlewareRepositoryImp JWT;
 
     InstitucionService(InstitucionRepository institucionRepository){
         this.institucionRepository = institucionRepository;
@@ -42,6 +50,19 @@ public class InstitucionService {
 
     public void deleteInstitucion(Long id){
         institucionRepository.delete(id);
+    }
+
+    public Login login(LoginForm form) {
+        VoluntarioEntity vol = institucionRepository.getByEmail(form.getEmail());
+        if (vol == null) {
+            return new Login(false, null);
+        }
+        if (!form.getPassword().equals(vol.getPassword())) {
+            return new Login(false, null);
+        }
+
+        String jwt = JWT.generateToken(form);
+        return new Login(true, jwt);
     }
 
 }

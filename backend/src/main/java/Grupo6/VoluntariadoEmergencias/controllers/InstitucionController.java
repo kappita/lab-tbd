@@ -1,5 +1,7 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
+import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.InstitucionEntity;
 import Grupo6.VoluntariadoEmergencias.repositories.InstitucionRepository;
 
@@ -48,6 +50,11 @@ public class InstitucionController {
     @DeleteMapping("/instituciones/delete/{id}")
     public void deleteInstitucion(@PathVariable Long id){
         institucionService.deleteInstitucion(id);
+    }
+
+    @PostMapping("/instituciones/login")
+    public Login login(@RequestBody LoginForm form){
+        return institucionService.login(form);
     }
 
 }
