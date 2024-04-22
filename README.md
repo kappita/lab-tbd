@@ -67,7 +67,9 @@ Una vez finalizado estos nueve pasos, podemos seguir con las instrucciones de us
 1. En PgAdmin, crear una BD llamada "Tebede", ir a Schemas -> Public y seleccionar la opción "Query tool", y abrir el archivo dbCreate.sql
 
 2. Abrir el archivo loadData.sql y ejecutarlo en la Query tool.
-4. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Gradle. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
+3. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Gradle.
+4. Antes de ejecutar el proyecto, asegurarse de que en el archivo backend/src/main/resources/application.properties se encuentren las credenciales correctas de la base de datos
+5. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
 6. Dentro de la carpeta Frontend, abrir una consola / terminal. Ejecutar el siguiente comando:
 ```sh
 npm install
