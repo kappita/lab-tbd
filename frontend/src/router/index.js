@@ -4,6 +4,7 @@ import Registro from '@/views/Registro.vue'
 import Emergencias from '@/views/Emergencias.vue'
 import Postulacion from '@/views/Postulacion.vue'
 import Login from '@/views/Login.vue'
+import Habilidades from '@/views/Habilidades.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/habilidades',
+      name: 'Login',
+      component: Habilidades
     }
   ]
 })
