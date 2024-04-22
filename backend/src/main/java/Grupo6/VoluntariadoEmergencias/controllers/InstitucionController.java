@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/instituciones")
 public class InstitucionController {
 
     @Autowired
     InstitucionService institucionService;
     // crear C
-    @PostMapping("/instituciones/save")
+    @PostMapping("/save")
     @ResponseBody
     public InstitucionEntity crearInstitucion(@RequestBody InstitucionEntity institucion){
         InstitucionEntity inst = institucionService.crearInstitucion(institucion);
         return inst;
     }
     // get R
-    @GetMapping("/instituciones/getAll")
+    @GetMapping("/getAll")
     @ResponseBody
     public List<InstitucionEntity> getAllInstituciones(){
         return institucionService.getAllInstituciones();
     }
     //get by
-    @GetMapping("/instituciones/getById/{id}")
+    @GetMapping("/getById/{id}")
     @ResponseBody
     public List<InstitucionEntity> getInstitucionById(@PathVariable Long id){
         return institucionService.getInstitucionById(id);
@@ -39,7 +39,7 @@ public class InstitucionController {
 
 
     // actualizar U
-    @PutMapping("/instituciones/update/{id}")
+    @PutMapping("/update/{id}")
     @ResponseBody
     public String updateInstitucion(@RequestBody InstitucionEntity institucion, @PathVariable Long id){
         String retorno = institucionService.updateInstitucion(institucion,id);
@@ -47,12 +47,12 @@ public class InstitucionController {
     }
 
     // borrar D
-    @DeleteMapping("/instituciones/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteInstitucion(@PathVariable Long id){
         institucionService.deleteInstitucion(id);
     }
 
-    @PostMapping("/instituciones/login")
+    @PostMapping("/login")
     public Login login(@RequestBody LoginForm form){
         return institucionService.login(form);
     }
