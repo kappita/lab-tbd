@@ -27,10 +27,10 @@
       password: password.value
     }
     if (usertype.value === 1) {
-      axios.post("http://localhost:8080/voluntario/login", body).then(e=> console.log(e.data))
+      axios.post("http://localhost:8080/voluntarios/login", body).then(e=> console.log(e.data))
     }
     if (usertype.value === 2) {
-      axios.post("http://localhost:8080/institucion/login", body).then(e => console.log(e.data))
+      axios.post("http://localhost:8080/instituciones/login", body).then(e => console.log(e.data))
     }
   }
 
