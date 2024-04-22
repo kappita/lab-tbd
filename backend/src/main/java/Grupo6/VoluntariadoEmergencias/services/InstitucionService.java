@@ -40,7 +40,7 @@ public class InstitucionService {
 
     // borrar D
 
-    public void deleteInstitucion(@PathVariable Long id){
+    public void deleteInstitucion(Long id){
         institucionRepository.delete(id);
     }
 
