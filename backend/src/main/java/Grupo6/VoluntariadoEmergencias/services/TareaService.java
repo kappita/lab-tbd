@@ -54,8 +54,8 @@ public class TareaService {
 
         // Se unen las habilidades de cada tarea a su tarea
         // y se guardan en una lista
-        Long idTarea = tareasEmergencia.getFirst().getIdTarea();
-        TareaConHabilidades nuevaTarea = new TareaConHabilidades(tareasEmergencia.getFirst());
+        Long idTarea = tareasEmergencia.get(0).getIdTarea();
+        TareaConHabilidades nuevaTarea = new TareaConHabilidades(tareasEmergencia.get(0));
         for (TareaEmergenciaEntity tarea : tareasEmergencia) {
             if (!idTarea.equals(tarea.getIdTarea())) {
                 tareasConHabilidades.add(nuevaTarea);
