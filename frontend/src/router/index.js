@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Registro from '@/views/Registro.vue'
 import Emergencias from '@/views/Emergencias.vue'
 import Postulacion from '@/views/Postulacion.vue'
+import Login from '@/views/Login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,11 @@ const router = createRouter({
       path: '/postulaciones',
       name: 'postulaciones',
       component: Postulacion
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
