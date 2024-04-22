@@ -1,98 +1,100 @@
-<template>
-  <div class="title">
-    <h1>Bienvenido a la aplicación de Voluntariados de Emergencia</h1>
-    <h2>¡Regístrate aquí!</h2>
-  </div>
-
-  <div>
-    <h1>Ingresa tus datos:</h1>
-    <form @submit.prevent="registrarVoluntario">
-      <input v-model="voluntario.nombre" placeholder="Nombre" required />
-      <input v-model="voluntario.email" placeholder="Email" type="email" required />
-      <input v-model="voluntario.password" placeholder="Contraseña" type="password" required />
-      <input v-model="voluntario.rut" placeholder="RUT" required />
-      
-      <div class="selector-multiple">
-        <h1>Ingresa tus habilidades:</h1>
-        <label v-for="habilidad in habilidades" :key="habilidad.id" class="habilidad-label">
-          <input type="checkbox" :value="habilidad.id" v-model="voluntario.habilidades">
-          {{ habilidad.descripcion }}
-        </label>
-      </div>
-      
-      <button type="submit">Registrar</button>
-    </form>
-  </div>
-  
-  <!-- Mensaje de éxito después de registrar -->
-  <div v-if="mensajeExito" class="mensaje-exito">
-    {{ mensajeExito }}
-  </div>
-</template>
-
-<script>
+<script setup>
 import axios from 'axios';
-import { obtenerHabilidades } from './apiService';
+import { ref } from 'vue';
 
-export default {
-  data() {
-    return {
-      voluntario: {
-        nombre: '',
-        email: '',
-        password: '',
-        rut: '',
-        habilidades: []
-      },
-      habilidades: [],
-      mensajeExito: ''
-    };
-  },
-  created() {
-    this.fetchHabilidades();
-  },
-  methods: {
-    fetchHabilidades() {
-      obtenerHabilidades()
-        .then(response => {
-          this.habilidades = response.data;
-        })
-        .catch(error => {
-          console.error('Hubo un error al obtener las habilidades:', error);
-        });
-    },
-    registrarVoluntario() {
-      if (this.voluntario.habilidades.length === 0) {
-        alert("Por favor, selecciona al menos una habilidad.");
-        return;
-      }
-      
-      const url = 'http://localhost:8080/voluntarios/save';
-      axios.post(url, this.voluntario)
-        .then(response => {
-          this.mensajeExito = 'Voluntario registrado con éxito.'; // Mensaje de éxito
-          console.log('Voluntario registrado con éxito:', response.data);
-        })
-        .catch(error => {
-          console.error('Hubo un error al registrar el voluntario:', error);
-          this.mensajeExito = '';
-        });
+
+const usertype = ref(0)
+const name = ref("")
+const email = ref("")
+const password = ref("")
+const rut = ref("")
+const exito = ref(false)
+const mensajeExito = "Usuario registrado exitosamente"
+
+const sendForm = () => {
+    if (usertype.value === 0) {
+      window.alert("Información inválida")
+      return
     }
-  }
-};
+
+    if (rut.email === "") {
+        window.alert("Debes ingresar un email")
+        return
+    }
+    if (password.value === "") {
+        window.alert("Debes ingresar una contraseña")
+        return
+      }
+
+    if (name.value === "") {
+      window.alert("Debes ingresar un nombre para la institucion")
+      return
+    }
+    
+    if (usertype.value === 1) {
+      if (rut.value === "") {
+        window.alert("Debes ingresar un rut")
+        return
+      }
+
+      const body = {
+      rut: rut.value,
+      nombre: name.value,
+      email: email.value,
+      password: password.value
+      }
+      axios.post("http://localhost:8080/voluntarios/save", body).then(e => exito.value = true)
+      return
+    }
+
+
+    if (usertype.value === 2) {
+      const body = {
+      nombre: name.value,
+      email: email.value,
+      password: password.value
+      }
+      axios.post("http://localhost:8080/instituciones/save", body).then(e => exito.value = true)
+    }
+}
+
 </script>
 
-<style>
-.selector-multiple {
-  display: flex;
-  flex-direction: column;
-}
+<template>
 
-.habilidad-label {
-  margin: 0.5rem 0;
-}
+<main>
+    <div class="title">
+      <h1>
+        Bienvenido a la aplicación de Voluntariados de Emegencia
+      </h1>
+      <h2>
+        ¡Regístrate aquí!
+      </h2>
+    </div>
 
-/* Estilos para el mensaje de éxito */
+    <div class="form">
+      <select placeholder="Tipo de usuario" class="tipo-user" v-model="usertype" >
+        <option disabled value="">Selecciona el tipo de usuario</option>
+        <option :value="1">Voluntario</option>
+        <option :value="2">Institución</option>
+      </select>
+      <input v-if="usertype === 1" placeholder="Rut" type="text" name="rut" v-model="rut">
+      <input placeholder="Nombre. Ej: René Cáceres" type="text" name="name" id="" v-model="name">
+      <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" name="email" id="" v-model="email">
+      <input placeholder="Contraseña" type="text" name="password" id="" v-model="password">
+      <button @click="sendForm()">
+        Registrarse
+      </button>
+    </div>
+
+    <div v-if="exito" class="mensaje-exito">
+    {{ mensajeExito }}
+    </div>
+  </main>
+
+</template>
+
+<style scoped>
 .mensaje-exito {
   color: green;
   background-color: #e8f5e9;
@@ -101,3 +103,5 @@ export default {
   margin: 10px 0;
 }
 </style>
+
+
