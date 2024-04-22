@@ -4,6 +4,7 @@
   import { ref } from 'vue';
   const email = ref("")
   const emergencies = ref([])
+  const exito = ref("")
   axios.get(`http://localhost:8080/emergencias_habilidad/getEmergencias`).then( e=> {
     emergencies.value = e.data
   })
@@ -12,6 +13,7 @@
   const agregar = (id_emergencia) => {
     axios.post(`http://localhost:8080/agregar_voluntario_disponible/${id_emergencia}/${email.value}`).then( e=> {
       console.log(e.data)
+      exito.value = e.data
   })
   }
 
@@ -41,6 +43,10 @@
       <div class="emergencies">
         <Emergency v-for="e in emergencies" :data="e" @sign-in="n => agregar(n)"></Emergency>
       </div>
+    </div>
+
+    <div v-if="exito" class="mensaje-exito">
+        {{ exito }}
     </div>
 
 
@@ -78,6 +84,13 @@ header {
   width: 50%;
   height: 80%;
   overflow: scroll;
+}
+.mensaje-exito {
+  color: green;
+  background-color: #e8f5e9;
+  border-left: 5px solid #4caf50;
+  padding: 10px;
+  margin: 10px 0;
 }
 
 </style>
