@@ -64,6 +64,7 @@ const sendForm = () => {
 
 <main>
     <div class="title">
+    <img src="@/assets/logo.png" alt="PoneleVoluntAPP Logo" class="logo" />
       <h1>
         Bienvenido a la aplicación de Voluntariados de Emegencia
       </h1>
@@ -101,6 +102,13 @@ const sendForm = () => {
   border-left: 5px solid #4caf50;
   padding: 10px;
   margin: 10px 0;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 100px;
+  height: auto;
 }
 </style>
 
