@@ -83,4 +83,16 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         }
 
     }
+
+    @Override
+    public VoluntarioEntity getByEmail(String email) {
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("select * from Voluntario where email = :email")
+                    .addParameter("email", email)
+                    .executeAndFetchFirst(VoluntarioEntity.class);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

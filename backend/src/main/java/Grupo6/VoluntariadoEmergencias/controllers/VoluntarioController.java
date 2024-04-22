@@ -1,5 +1,8 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
+import Grupo6.VoluntariadoEmergencias.Forms.JWTForm;
+import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 
@@ -58,4 +61,13 @@ public class VoluntarioController {
         return voluntarioService.getAllHabilidades();
     }
 
+    @PostMapping("/voluntarios/login")
+    public Login login(@RequestBody LoginForm form){
+        return voluntarioService.login(form);
+    }
+
+    @PostMapping("/voluntarios/pruebajwt")
+    public LoginForm testJWT(@RequestBody JWTForm form){
+        return voluntarioService.testJWT(form.getToken());
+    }
 }
