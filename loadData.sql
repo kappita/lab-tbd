@@ -1,14 +1,14 @@
 ------ Insertar datos en la tabla Institucion
-INSERT INTO Institucion (nombre) VALUES ('ADRA Chile');
-INSERT INTO Institucion (nombre) VALUES ('Colegio Medico Veterinario de Chile');
-INSERT INTO Institucion (nombre) VALUES ('Desafío Levantemos Chile');
-INSERT INTO Institucion (nombre) VALUES ('Cruz Roja Chilena');
-INSERT INTO Institucion (nombre) VALUES ('Instito Nacional de la Juventud');
-INSERT INTO Institucion (nombre) VALUES ('Un Techo para Chile');
-INSERT INTO Institucion (nombre) VALUES ('Bomberos de Chile');
-INSERT INTO Institucion (nombre) VALUES ('Hogar de Cristo');
-INSERT INTO Institucion (nombre) VALUES ('Coordinadora Social Shishigang');
-INSERT INTO Institucion (nombre) VALUES ('Donaciones Naya Facil');
+INSERT INTO Institucion (nombre, email, password) VALUES ('ADRA Chile', 'contacto@adra.cl', 'pass9090');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Colegio Medico Veterinario de Chile', 'contacto@colmedvet.cl', 'pass9091');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Desafío Levantemos Chile', 'contacto@desafio.cl', 'pass9092');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Cruz Roja Chilena', 'contacto@cruzroja.cl', 'pass9093');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Instito Nacional de la Juventud', 'contacto@injuv.cl', 'pass9094');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Un Techo para Chile', 'contacto@techo.cl', 'pass9095');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Bomberos de Chile', 'contacto@bomberos.cl', 'pass9096');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Hogar de Cristo', 'contacto@hogardecristo.cl', 'pass9097');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Coordinadora Social Shishigang', 'contacto@shishigang.cl', 'pass9098');
+INSERT INTO Institucion (nombre, email, password) VALUES ('Donaciones Naya Facil', 'contacto@nayafacil.cl', 'pass9099');
 
 -- Insertar datos en la tabla Voluntario
 INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Andrea Juárez', 'andrea.juarez@example.com', 'pass123', '12345678-9');
