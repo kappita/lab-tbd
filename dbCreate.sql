@@ -162,7 +162,7 @@ CREATE TABLE registro_actividad (
   query text
 );
 
--- Función que implica que la función se utiliza para registrar cambios en la base de datos.--
+-- Función que se utiliza para registrar cambios en la base de datos.--
 CREATE OR REPLACE FUNCTION funcion_registro_trigger()
 RETURNS TRIGGER AS $$
 BEGIN 
