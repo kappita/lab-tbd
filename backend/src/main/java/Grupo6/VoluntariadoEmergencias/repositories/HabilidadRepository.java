@@ -9,6 +9,7 @@ public interface HabilidadRepository {
     List<HabilidadEntity> getById(Long id);
     HabilidadEntity save(HabilidadEntity habilidad);
     String updateNombreHabilidad(HabilidadEntity habilidad,Long id);
+    List<HabilidadEntity> getByEmailVoluntario(String email);
     void delete(Long id);
 
     List<HabilidadEntity> findAll();
