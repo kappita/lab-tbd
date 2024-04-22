@@ -22,9 +22,6 @@
       return
     }
 
-
-
-
     const body = {
       email: email.value,
       password: password.value
@@ -56,7 +53,7 @@
           <option :value="2">Institución</option>
         </select>
         <button @click="sendForm()">
-          Registrarse
+          Iniciar sesión
         </button>
       </div>
     </div>

@@ -44,9 +44,10 @@ const router = createRouter({
     },
     {
       path: '/habilidades',
-      name: 'Login',
+      name: 'Habilidades',
       component: Habilidades
     }
+    
   ]
 })
 
