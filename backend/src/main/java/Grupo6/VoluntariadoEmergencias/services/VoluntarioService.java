@@ -1,13 +1,12 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
+import Grupo6.VoluntariadoEmergencias.Forms.AbilitiesForm;
 import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
 import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
-import Grupo6.VoluntariadoEmergencias.repositories.HabilidadRepository;
-import Grupo6.VoluntariadoEmergencias.repositories.JWTMiddlewareRepository;
-import Grupo6.VoluntariadoEmergencias.repositories.JWTMiddlewareRepositoryImp;
-import Grupo6.VoluntariadoEmergencias.repositories.VoluntarioRepository;
+import Grupo6.VoluntariadoEmergencias.entities.VoluntarioHabilidadEntity;
+import Grupo6.VoluntariadoEmergencias.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -82,6 +81,23 @@ public class VoluntarioService {
             return JWT.decodeJWT(token);
         }
         return null;
+    }
+
+    @Autowired
+    VoluntarioHabilidadRepository voluntarioHabilidadRepository;
+
+    public String agregarHabilidades(AbilitiesForm form) {
+        VoluntarioEntity vol = voluntarioRepository.getByEmail(form.getEmail());
+        if (vol == null) {
+            return "El usuario no existe";
+        }
+
+        for (Long ability_id : form.getAbility_ids()) {
+            VoluntarioHabilidadEntity volhab = new VoluntarioHabilidadEntity(null, vol.getId(), ability_id);
+            voluntarioHabilidadRepository.save(volhab);
+        }
+
+        return "Las habilidades se agregaron exitosamente";
     }
 
 
