@@ -11,22 +11,26 @@ INSERT INTO Institucion (nombre, email, password) VALUES ('Coordinadora Social S
 INSERT INTO Institucion (nombre, email, password) VALUES ('Donaciones Naya Facil', 'contacto@nayafacil.cl', 'pass9099');
 
 -- Insertar datos en la tabla Voluntario
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Andrea Juárez', 'andrea.juarez@example.com', 'pass123', '12345678-9');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Luis Navarro', 'luis.navarro@example.com', 'pass456', '23456789-0');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Carla Espinoza', 'carla.espinoza@example.com', 'pass789', '14567890-1');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Marco Antonio', 'marco.antonio@example.com', 'pass012', '15678901-2');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Ximena Soto', 'ximena.soto@example.com', 'pass345', '16789012-3');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Diego Morales', 'diego.morales@example.com', 'pass678', '17890123-4');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Rosa Campos', 'rosa.campos@example.com', 'pass901', '18901234-5');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Javier López', 'javier.lopez@example.com', 'pass234', '19012345-6');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Mónica Gutiérrez', 'monica.gutierrez@example.com', 'pass567', '20123456-7');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Esteban Rojas', 'esteban.rojas@example.com', 'pass890', '21234567-8');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Carmen Herrera', 'carmen.herrera@example.com', 'pass1234', '20345678-0');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Fernando Mora', 'fernando.mora@example.com', 'pass5678', '23456789-1');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Gabriela Castillo', 'gabriela.castillo@example.com', 'pass91011', '21567890-2');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Mauricio Pinto', 'mauricio.pinto@example.com', 'pass1213', '22678901-3');
-INSERT INTO Voluntario (nombre, email, password, rut) VALUES ('Lucia Méndez', 'lucia.mendez@example.com', 'pass1415', '22789012-4');
-
+INSERT INTO Voluntario (nombre, email, password, rut, ubicacion_voluntario) VALUES ('Andrea Juárez', 'andrea.juarez@example.com', 'pass123', '12345678-9',ST_GeomFromText('POINT(-33.475460477185464 -70.72326024012591)', 4326)); --SANTIAGO
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Luis Navarro', 'luis.navarro@example.com', 'pass456', '23456789-0',ST_GeomFromText('POINT(-33.47538868364822 -70.72413394422644)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Carla Espinoza', 'carla.espinoza@example.com', 'pass789', '14567890-1',ST_GeomFromText('POINT(-39.295751618022386 -72.23595293617713)', 4326));--VILLARICA
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Marco Antonio', 'marco.antonio@example.com', 'pass012', '15678901-2',ST_GeomFromText('POINT(-39.295938693967116 -72.23591193023263)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Ximena Soto', 'ximena.soto@example.com', 'pass345', '16789012-3',ST_GeomFromText('POINT(-39.295938693967116 -72.23591193023263)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Diego Morales', 'diego.morales@example.com', 'pass678', '17890123-4',ST_GeomFromText('POINT(-39.29429961138347 -72.23642324842609)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Rosa Campos', 'rosa.campos@example.com', 'pass901', '18901234-5',ST_GeomFromText('POINT(-39.294483889806955 -72.23594449904962)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Javier López', 'javier.lopez@example.com', 'pass234', '19012345-6',ST_GeomFromText('POINT(-39.29408053252056 -72.23546478607034)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Mónica Gutiérrez', 'monica.gutierrez@example.com', 'pass567', '20123456-7',ST_GeomFromText('POINT(-39.29572248782302 -72.23887361702606)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Esteban Rojas', 'esteban.rojas@example.com', 'pass890', '21234567-8',ST_GeomFromText('POINT(-39.29436198328951 -72.23953432795741)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Carmen Herrera', 'carmen.herrera@example.com', 'pass1234', '20345678-0',ST_GeomFromText('POINT(-39.29418905819766 -72.23939122721433)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Fernando Mora', 'fernando.mora@example.com', 'pass5678', '23456789-1',ST_GeomFromText('POINT(-53.161673785843504 -70.94343055289791)', 4326));--PUNTA ARENAS
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Gabriela Castillo', 'gabriela.castillo@example.com', 'pass91011', '21567890-2',ST_GeomFromText('POINT(-53.160851706087755 -70.94572199434975)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Mauricio Pinto', 'mauricio.pinto@example.com', 'pass1213', '22678901-3',ST_GeomFromText('POINT(-27.3590183560186 -70.31368820371438)', 4326));--COPIAPÓ
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Lucia Méndez', 'lucia.mendez@example.com', 'pass1415', '22789012-4',ST_GeomFromText('POINT(-27.35836069846974 -70.31283756029991)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Carmen Rosario', 'carmen.reosario@example.com', 'pass1234', '21445678-0',ST_GeomFromText('POINT(-20.235032129183317 -70.13005699582126)', 4326));--IQUIQUE
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Fernando Martinez', 'fernando.martinez@example.com', 'pass5678', '22456789-2',ST_GeomFromText('POINT(-20.237267679052415 -70.13047671112301)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Gabriela Gaete', 'gabriela.gaete@example.com', 'pass91011', '20567890-2',ST_GeomFromText('POINT(-20.236845974454152 -70.1310180399508)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Mauricio Martinez', 'mauricio.martinez@example.com', 'pass1213', '20678901-2',ST_GeomFromText('POINT(-20.236312329044015 -70.13053487778923)', 4326));
+INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Lucia Petinelli', 'lucia.petinelli@example.com', 'pass1415', '21789012-2',ST_GeomFromText('POINT(-33.23262573587894 -70.80860877689753)', 4326));
 -- Insertar datos en la tabla Emergencia
 INSERT INTO Emergencia (id_institucion, nombre) VALUES (1, 'Inundación en Curanilahue');
 INSERT INTO Emergencia (id_institucion, nombre) VALUES (2, 'Terremoto en la Falla de San Ramón');
