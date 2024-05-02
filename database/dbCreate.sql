@@ -12,7 +12,8 @@ CREATE TABLE Voluntario (
     nombre VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    rut VARCHAR(12) UNIQUE NOT NULL
+    rut VARCHAR(12) UNIQUE NOT NULL,
+    ubicacion_voluntario geometry(Point, 4326)
 );
 
 -- Emergencias
@@ -21,7 +22,8 @@ CREATE TABLE Emergencia (
     id_institucion INTEGER NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     activa BOOLEAN NOT NULL DEFAULT TRUE,
-    FOREIGN KEY (id_institucion) REFERENCES Institucion(id)
+    FOREIGN KEY (id_institucion) REFERENCES Institucion(id),
+    ubicacion_emergencia geometry(Point, 4326)
 );
 
 -- Habilidades
