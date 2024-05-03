@@ -13,6 +13,8 @@ CREATE TABLE Voluntario (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     rut VARCHAR(12) UNIQUE NOT NULL,
+    latitud_voluntario FLOAT,
+    longitud_voluntario FLOAT,
     ubicacion_voluntario geometry(Point, 4326)
 );
 
@@ -23,6 +25,8 @@ CREATE TABLE Emergencia (
     nombre VARCHAR(255) NOT NULL,
     activa BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (id_institucion) REFERENCES Institucion(id),
+    latitud_emergencia FLOAT,
+    longitud_emergencia FLOAT,
     ubicacion_emergencia geometry(Point, 4326)
 );
 
