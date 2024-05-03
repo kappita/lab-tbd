@@ -32,13 +32,13 @@ INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUE
 INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Mauricio Martinez', 'mauricio.martinez@example.com', 'pass1213', '20678901-2',ST_GeomFromText('POINT(-70.13053487778923 -20.236312329044015)', 4326));
 INSERT INTO Voluntario (nombre, email, password, rut,ubicacion_voluntario) VALUES ('Lucia Petinelli', 'lucia.petinelli@example.com', 'pass1415', '21789012-2',ST_GeomFromText('POINT(-70.80860877689753 -33.23262573587894)', 4326));--RM, A LAS AFUERAS DE SANTIAGO EN BATUCO
 -- Insertar datos en la tabla Emergencia
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (1, 'Inundación en Curanilahue');
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (2, 'Terremoto en la Falla de San Ramón');
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (3, 'Incendio en la Quinta Región');
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (4, 'Erupción Volcan Villarrica');
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (5, 'Deslizamiento de Tierra en Arica');
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (6, 'Accidente de Tránsito ruta 5');
-INSERT INTO Emergencia (id_institucion, nombre) VALUES (7, 'Aluvión en San José de Maipo');
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (1, 'Inundación en Curanilahue',ST_GeomFromText('POINT(-73.33353626987845 -37.483676974253854)', 4326));
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (2, 'Terremoto en la Falla de San Ramón',ST_GeomFromText('POINT(-70.52769396364545 -33.42851620397572)', 4326));
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (3, 'Incendio en la Quinta Región',ST_GeomFromText('POINT(-71.48045310246394 -33.115862347470745)', 4326));
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (4, 'Erupción Volcan Villarrica',ST_GeomFromText('POINT(-71.95485261872373 -39.40821695774821)', 4326));
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (5, 'Deslizamiento de Tierra en Arica',ST_GeomFromText('POINT(-70.29852629739936 -18.41392204306616)', 4326));
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (6, 'Accidente de Tránsito ruta 5',ST_GeomFromText('POINT(-71.54208213655531 -30.763599876540138)', 4326));
+INSERT INTO Emergencia (id_institucion, nombre,ubicacion_emergencia) VALUES (7, 'Aluvión en San José de Maipo',ST_GeomFromText('POINT(-70.35630936409954 -33.63536555081124)', 4326));
 
 -- Insertar datos en la tabla Habilidad
 INSERT INTO Habilidad (nombre, descripcion) VALUES ('Primeros Auxilios', 'Capacidad para realizar atención inicial en emergencias médicas.');
