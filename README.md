@@ -21,11 +21,14 @@ El repositorio incluye las siguientes carpetas principales:
 
 ## Requisitos y Versiones de las Tecnologías.
 
-* [Postgres SQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) versión 12 o superior. 
+* [Postgres SQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) versión 12 o superior.
+* [SQL2O](https://www.sql2o.org/) versión 1.6.0.
+* [JJWT](https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt) versión 0.12.5.
 * [PgAdmin](https://www.pgadmin.org) versión 4.
 * [IntelliJ IDEA Ultimate](https://www.jetbrains.com/es-es/idea/download/#section=windows) versión 2024.1, aunque debería funcionar con cualquier versión.
 * JDK Versión 17.
 * [VUE](https://es.vuejs.org/v2/guide/installation) versión 2.x.
+* [axios](https://axios-http.com/es/) versión 1.6.8.
 * [Postman](https://www.postman.com/downloads/) versión Postman 10.24.22.
 
 ## Instrucciones de Instalación.
@@ -64,7 +67,9 @@ Una vez finalizado estos nueve pasos, podemos seguir con las instrucciones de us
 1. En PgAdmin, crear una BD llamada "Tebede", ir a Schemas -> Public y seleccionar la opción "Query tool", y abrir el archivo dbCreate.sql
 
 2. Abrir el archivo loadData.sql y ejecutarlo en la Query tool.
-4. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Gradle. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
+3. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Gradle.
+4. Antes de ejecutar el proyecto, asegurarse de que en el archivo backend/src/main/resources/application.properties se encuentren las credenciales correctas de la base de datos
+5. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
 6. Dentro de la carpeta Frontend, abrir una consola / terminal. Ejecutar el siguiente comando:
 ```sh
 npm install
