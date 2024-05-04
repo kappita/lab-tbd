@@ -1,5 +1,7 @@
 package Grupo6.VoluntariadoEmergencias.entities;
 
+import org.locationtech.jts.geom.Geometry;
+
 public class VoluntarioEntity {
 
     private Long idVoluntario;
@@ -7,13 +9,17 @@ public class VoluntarioEntity {
     private String email;
     private String password;
     private String rut;
+    private Double longitud_voluntario;
+    private Double latitud_voluntario;
 
-    public VoluntarioEntity(Long id, String nombre, String email, String password, String rut) {
+    public VoluntarioEntity(Long id, String nombre, String email, String password, String rut, Double longitud_voluntario, Double latitud_voluntario) {
         this.idVoluntario = id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.rut = rut;
+        this.longitud_voluntario = longitud_voluntario;
+        this.latitud_voluntario = latitud_voluntario;
     }
 
     public Long getId() {
@@ -54,5 +60,21 @@ public class VoluntarioEntity {
 
     public void setRut(String rut) {
         this.rut = rut;
+    }
+
+    public Double getLongitud_voluntario() {
+        return longitud_voluntario;
+    }
+
+    public void setLongitud_voluntario(Double longitud_voluntario) {
+        this.longitud_voluntario = longitud_voluntario;
+    }
+
+    public Double getLatitud_voluntario() {
+        return latitud_voluntario;
+    }
+
+    public void setLatidud_voluntario(Double latitud_voluntario) {
+        this.latitud_voluntario = latitud_voluntario;
     }
 }
