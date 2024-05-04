@@ -1,96 +1,145 @@
+<template>
+  <Navbar />
+  <div class="login-main">
+    <div class="login-content">
+      <h1>Logeate en PóneleVoluntAPP</h1>
+      <div class="login-form">
+        <select v-model="usertype">
+          <option disabled value="0" selected>Selecciona el tipo de usuario</option>
+          <option value="1">Voluntario</option>
+          <option value="2">Institución</option>
+        </select>
+        <input :placeholder="emailPlaceholder" type="email" v-model="email">
+        <input placeholder="Contraseña" type="password" v-model="password">
+        <button @click="sendForm" class="btn-login">Iniciar sesión</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 <script setup>
-  import axios from 'axios';
-  import { ref } from 'vue';
+import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
+import { ref, computed } from 'vue';
 
-  const usertype = ref(0)
-  const email = ref("")
-  const password = ref("")
+const usertype = ref(0);
+const email = ref("");
+const password = ref("");
 
-  const sendForm = () => {
-    if (usertype.value === 0) {
-      window.alert("Debe escoger un tipo de usuario")
-      return
-    }
+const emailPlaceholder = computed(() => {
+  if (usertype.value === '1') {
+    return "matias.calderon@outlook.cl"; // Placeholder for Voluntario
+  } else if (usertype.value === '2') {
+    return "shishigang@coordinadora.cl"; // Placeholder for Institución
+  }
+  return "Correo electrónico"; // Default placeholder
+});
 
-    if (email.value === "") {
-      window.alert("Debe ingresar un correo electronico")
-      return
-    }
-
-    if (password.value === "") {
-      window.alert("Debe ingresar una contraseña")
-      return
-    }
-
-    const body = {
-      email: email.value,
-      password: password.value
-    }
-    if (usertype.value === 1) {
-      axios.post("http://localhost:8080/voluntarios/login", body).then(e=> console.log(e.data))
-    }
-    if (usertype.value === 2) {
-      axios.post("http://localhost:8080/instituciones/login", body).then(e => console.log(e.data))
-    }
+const sendForm = () => {
+  if (usertype.value === 0) {
+    window.alert("Debe escoger un tipo de usuario");
+    return;
   }
 
+  if (email.value === "") {
+    window.alert("Debe ingresar un correo electrónico");
+    return;
+  }
+
+  if (password.value === "") {
+    window.alert("Debe ingresar una contraseña");
+    return;
+  }
+
+  const body = {
+    email: email.value,
+    password: password.value
+  };
+  if (usertype.value === 1) {
+    axios.post("http://localhost:8080/voluntarios/login", body).then(e => console.log(e.data));
+  }
+  if (usertype.value === 2) {
+    axios.post("http://localhost:8080/instituciones/login", body).then(e => console.log(e.data));
+  }
+}
 </script>
 
 
-<template>
-  <main>
-    <div class="content">
-      <h1>
-        Inicia sesion en PoneleVoluntapp
-      </h1>
-  
-      <div class="form">
-        <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" name="email" id="" v-model="email">
-        <input placeholder="Contraseña" type="text" name="password" id="" v-model="password">
-        <select class="tipo-user" v-model="usertype" >
-          <option disabled value="" selected >Selecciona el tipo de usuario</option>
-          <option :value="1">Voluntario</option>
-          <option :value="2">Institución</option>
-        </select>
-        <button @click="sendForm()">
-          Iniciar sesión
-        </button>
-      </div>
-    </div>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
-  </main>
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
-</template>
-
-<style scoped> 
-
-main {
+.login-main {
+  background-image: linear-gradient(to bottom right, #f0f9ff, #cbebff);
   display: flex;
-  height: 100vh;
-  width: 100vw;
   align-items: center;
   justify-content: center;
-
+  height: 100vh;
+  text-align: center;
 }
 
-.content {
-  width: 25%;
-  height: 40%;
+.login-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 350px;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.form {
-  height: 100%;
-  width: 100%;
+.login-form {
   display: flex;
   flex-direction: column;
 }
 
-input {
-  margin-bottom: 10px;
+h1 {
+  color: #101935;
 }
 
-select {
+input, select, button {
+  padding: 8px 10px; 
   margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  width: 100%; 
+  font-size: 0.9rem; 
+}
+
+input[type="email"], input[type="password"], select {
+  background-color: #f0f9ff;
+  color: #000;
+}
+
+input:hover, select:hover, input:focus, select:focus {
+  background-color: #e6f7ff;
+  outline: none; 
+}
+
+.btn-login {
+  background-color: #9ad4d6;
+  color: #101935;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #564787;
+  color: #f2fdff;
+  transform: translateY(-2px);
 }
 </style>
