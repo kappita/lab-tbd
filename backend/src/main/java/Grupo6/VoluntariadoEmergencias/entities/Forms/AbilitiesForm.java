@@ -1,4 +1,4 @@
-package Grupo6.VoluntariadoEmergencias.Forms;
+package Grupo6.VoluntariadoEmergencias.entities.Forms;
 
 import java.util.ArrayList;
 import java.util.List;

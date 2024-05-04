@@ -1,4 +1,4 @@
-package Grupo6.VoluntariadoEmergencias.Forms;
+package Grupo6.VoluntariadoEmergencias.entities.Forms;
 
 public class LoginForm {
     private String email;

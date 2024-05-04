@@ -1,5 +1,6 @@
 package Grupo6.VoluntariadoEmergencias.repositories;
 
+import Grupo6.VoluntariadoEmergencias.Utils.Encrypter;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
             conn.createQuery(sql)
                     .addParameter("nombre", voluntario.getNombre())
                     .addParameter("email", voluntario.getEmail())
-                    .addParameter("password", voluntario.getPassword())
+                    .addParameter("password", Encrypter.encrypt(voluntario.getPassword(),voluntario.getEmail()))
                     .addParameter("rut", voluntario.getRut())
                     .executeUpdate();
 

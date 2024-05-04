@@ -1,6 +1,6 @@
 package Grupo6.VoluntariadoEmergencias.repositories;
 
-import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 
 public interface JWTMiddlewareRepository {
     public String generateToken(LoginForm form);

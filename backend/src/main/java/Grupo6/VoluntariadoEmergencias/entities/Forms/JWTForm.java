@@ -1,4 +1,4 @@
-package Grupo6.VoluntariadoEmergencias.Forms;
+package Grupo6.VoluntariadoEmergencias.entities.Forms;
 
 public class JWTForm {
     private String token;

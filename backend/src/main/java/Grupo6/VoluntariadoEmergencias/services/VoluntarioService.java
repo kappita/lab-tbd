@@ -1,15 +1,15 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
-import Grupo6.VoluntariadoEmergencias.Forms.AbilitiesForm;
-import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.AbilitiesForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 import Grupo6.VoluntariadoEmergencias.Responses.Login;
+import Grupo6.VoluntariadoEmergencias.Utils.Encrypter;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioHabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -68,7 +68,7 @@ public class VoluntarioService {
         if (vol == null) {
             return new Login(false, null);
         }
-        if (!form.getPassword().equals(vol.getPassword())) {
+        if (!form.getPassword().equals(Encrypter.decrypt(vol.getPassword(),vol.getEmail()))){
             return new Login(false, null);
         }
 
