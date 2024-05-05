@@ -5,7 +5,7 @@
         <h1 class="navbar-title">PóneleVoluntAPP</h1>
       </router-link>
       <ul>
-        <li><router-link to="/about">¡Inscríbete!</router-link></li>
+        <li><router-link to="/inscribete">¡Inscríbete!</router-link></li>
       </ul>
     </nav>
   </template>

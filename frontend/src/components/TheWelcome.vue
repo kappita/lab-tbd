@@ -4,7 +4,7 @@
     <div class="content">
       <h1>¡Bienvenid@ a PóneleVoluntAPP!</h1>
       <p>Coordinando esfuerzos voluntarios en situaciones de emergencia.</p>
-      <router-link to="/about" class="btn btn-primary">Comienza a ayudar</router-link>
+      <router-link to="/inscribete" class="btn btn-primary">Comienza a ayudar</router-link>
     </div>
   </div>
 </template>

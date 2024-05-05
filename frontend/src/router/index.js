@@ -6,7 +6,7 @@ import Postulacion from '@/views/Postulacion.vue'
 import Login from '@/views/Login.vue'
 import Habilidades from '@/views/Habilidades.vue'
 import Navbar from '@/components/Navbar.vue'
-import AboutView from '../views/AboutView.vue'
+import AboutView from '../views/Inscribete.vue'
 
 
 const router = createRouter({
@@ -18,9 +18,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
+      path: '/inscribete',
+      name: 'inscribete',
+      component: () => import('../views/Inscribete.vue')
     },
     {
       path: '/registro',
