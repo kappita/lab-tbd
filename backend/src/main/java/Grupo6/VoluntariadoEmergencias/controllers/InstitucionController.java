@@ -1,9 +1,8 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
-import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.InstitucionEntity;
-import Grupo6.VoluntariadoEmergencias.repositories.InstitucionRepository;
 
 import Grupo6.VoluntariadoEmergencias.services.InstitucionService;
 import org.springframework.beans.factory.annotation.Autowired;

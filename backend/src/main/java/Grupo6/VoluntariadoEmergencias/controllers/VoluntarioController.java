@@ -1,8 +1,8 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
-import Grupo6.VoluntariadoEmergencias.Forms.AbilitiesForm;
-import Grupo6.VoluntariadoEmergencias.Forms.JWTForm;
-import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.AbilitiesForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.JWTForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;

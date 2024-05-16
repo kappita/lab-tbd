@@ -1,6 +1,6 @@
 package Grupo6.VoluntariadoEmergencias.repositories;
 
-import Grupo6.VoluntariadoEmergencias.Forms.LoginForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import io.jsonwebtoken.*;
