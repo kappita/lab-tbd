@@ -41,6 +41,12 @@ public class VoluntarioController {
         return voluntarioService.getVoluntarioById(id);
     }
 
+    @GetMapping("/voluntarios/getByCercania/{idEmergencia}/{cantidad}")
+    @ResponseBody
+    public List<VoluntarioEntity> getVoluntarioByCercania(@PathVariable Long idEmergencia, @PathVariable int cantidad){
+        return voluntarioService.getVoluntariosByCercania(idEmergencia, cantidad);
+    }
+
 
     // actualizar U
     @PutMapping("/voluntarios/update/{id}")

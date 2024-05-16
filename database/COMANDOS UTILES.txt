@@ -1,0 +1,24 @@
+/////////////////AGREGANDO PUNTOS GEOMETRICOS A TABLAS YA EXISTENTES
+
+Usando SQL
+ALTER TABLE DOG ADD COLUMN location geometry(point);
+
+Usando funciones PostGIS
+SELECT AddGeometryColumn('dog','location','4326','POINT',2);
+
+////////////INSERTANDO PUNTO
+
+INSERT INTO DOG (name, location)
+VALUES ('Chamuyo', ST_GeomFromText('POINT(-72.928177 -41.474096)', 4326));
+
+/////////////SELECT FORMATEADO
+
+SELECT st_astext( location) as location FROM dog;
+------------------------------
+ POINT(-72.928177 -41.474096)
+
+SELECT st_x(st_astext( location)) AS long, st_y(st_astext(location)) AS lat FROM dog;
+	long	|	lat	 
+------------+------------
+ -72.928177 | -41.474096
+

@@ -44,6 +44,9 @@ public class VoluntarioService {
         return voluntarioRepository.getById(id);
     }
 
+    public List<VoluntarioEntity> getVoluntariosByCercania(Long idEmergencia, int cantidad){
+        return voluntarioRepository.getByUbicacionCercana(idEmergencia, cantidad);
+    }
 
     // actualizar U
 
