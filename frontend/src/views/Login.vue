@@ -17,15 +17,16 @@
   </div>
 </template>
 
-
 <script setup>
 import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 const usertype = ref(0);
 const email = ref("");
 const password = ref("");
+const router = useRouter();
 
 const emailPlaceholder = computed(() => {
   if (usertype.value === '1') {
@@ -57,14 +58,19 @@ const sendForm = () => {
     password: password.value
   };
   if (usertype.value === 1) {
-    axios.post("http://localhost:8080/voluntarios/login", body).then(e => console.log(e.data));
+    axios.post("http://localhost:8080/voluntarios/login", body).then(e => {
+      console.log(e.data);
+      router.push('/dashboard');
+    });
   }
   if (usertype.value === 2) {
-    axios.post("http://localhost:8080/instituciones/login", body).then(e => console.log(e.data));
+    axios.post("http://localhost:8080/instituciones/login", body).then(e => {
+      console.log(e.data);
+      router.push('/dashboard');
+    });
   }
 }
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');

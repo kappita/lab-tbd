@@ -1,8 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import HeroComponent from './components/TheWelcome.vue'
-import About from './views/Inscribete.vue'
 
 </script>
 

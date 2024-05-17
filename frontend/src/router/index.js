@@ -5,8 +5,9 @@ import Emergencias from '@/views/Emergencias.vue'
 import Postulacion from '@/views/Postulacion.vue'
 import Login from '@/views/Login.vue'
 import Habilidades from '@/views/Habilidades.vue'
-import Navbar from '@/components/Navbar.vue'
-import AboutView from '../views/Inscribete.vue'
+import VoluntariosCercanos from '@/views/VoluntariosCercanos.vue'
+import Dashboard from '@/views/Dashboard.vue';
+
 
 
 const router = createRouter({
@@ -46,6 +47,16 @@ const router = createRouter({
       path: '/habilidades',
       name: 'Habilidades',
       component: Habilidades
+    },
+    {
+      path: '/cercanos',
+      name: 'Voluntarios cercanos',
+      component: VoluntariosCercanos
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
     }
     
   ]
