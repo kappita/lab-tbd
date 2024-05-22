@@ -168,12 +168,28 @@ CREATE TABLE registro_actividad (
   query text
 );
 
--- Función que se utiliza para registrar cambios en la base de datos.--
 CREATE OR REPLACE FUNCTION funcion_registro_trigger()
 RETURNS TRIGGER AS $$
+DECLARE
+  nombre_usuario varchar(255);
+  full_query text;
 BEGIN 
+  -- Verificar si la tabla tiene una columna id_voluntario
+  IF EXISTS(SELECT 1 FROM information_schema.columns WHERE table_name = TG_TABLE_NAME AND column_name = 'id_voluntario') THEN
+    EXECUTE format('SELECT nombre FROM Voluntario WHERE id = %s', NEW.id_voluntario) INTO nombre_usuario;
+  -- Verificar si la tabla tiene una columna id_institucion
+  ELSIF EXISTS(SELECT 1 FROM information_schema.columns WHERE table_name = TG_TABLE_NAME AND column_name = 'id_institucion') THEN
+    EXECUTE format('SELECT nombre FROM Institucion WHERE id = %s', NEW.id_institucion) INTO nombre_usuario;
+  ELSE
+    -- Definir el nombre del usuario como el nombre de usuario de la sesión actual
+    nombre_usuario := current_user;
+  END IF;
+
+  -- Insertar en el registro de actividad
+  full_query := TG_OP || ' ' || TG_TABLE_NAME || ' ' || row_to_json(NEW)::text;
   INSERT INTO registro_actividad (nombre_tabla, operacion, nombre_usuario, timestamp, query)
-  VALUES (TG_TABLE_NAME, TG_OP, current_user, current_timestamp, NEW::text);
+  VALUES (TG_TABLE_NAME, TG_OP, nombre_usuario, current_timestamp, full_query);
+
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
