@@ -1,3 +1,4 @@
+CREATE EXTENSION postgis;
 -- Instituciones
 CREATE TABLE Institucion (
     id SERIAL PRIMARY KEY,
