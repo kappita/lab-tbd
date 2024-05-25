@@ -1,10 +1,10 @@
 package Grupo6.VoluntariadoEmergencias.entities.Forms;
 
-public class JWTForm {
+public class JWTForm{
     private String token;
 
-    public JWTForm() {
-        this.token = "";
+    public JWTForm(){
+        this.token = null;
     }
 
     public JWTForm(String token) {
