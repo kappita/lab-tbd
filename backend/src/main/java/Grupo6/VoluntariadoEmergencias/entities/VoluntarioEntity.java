@@ -77,4 +77,5 @@ public class VoluntarioEntity {
     public void setLatidud_voluntario(Double latitud_voluntario) {
         this.latitud_voluntario = latitud_voluntario;
     }
+
 }
