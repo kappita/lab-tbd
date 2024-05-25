@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
@@ -41,6 +41,13 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 1024px) {

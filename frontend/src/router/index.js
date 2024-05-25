@@ -5,6 +5,10 @@ import Emergencias from '@/views/Emergencias.vue'
 import Postulacion from '@/views/Postulacion.vue'
 import Login from '@/views/Login.vue'
 import Habilidades from '@/views/Habilidades.vue'
+import VoluntariosCercanos from '@/views/VoluntariosCercanos.vue'
+import Dashboard from '@/views/Dashboard.vue';
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,12 +19,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/inscribete',
+      name: 'inscribete',
+      component: () => import('../views/Inscribete.vue')
     },
     {
       path: '/registro',
@@ -46,6 +47,16 @@ const router = createRouter({
       path: '/habilidades',
       name: 'Habilidades',
       component: Habilidades
+    },
+    {
+      path: '/cercanos',
+      name: 'Voluntarios cercanos',
+      component: VoluntariosCercanos
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
     }
     
   ]

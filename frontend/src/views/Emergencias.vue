@@ -1,96 +1,115 @@
 <script setup>
-  import Emergency from '@/components/Emergency.vue';
-  import axios from 'axios';
-  import { ref } from 'vue';
-  const email = ref("")
-  const emergencies = ref([])
-  const exito = ref("")
-  axios.get(`http://localhost:8080/emergencias_habilidad/getEmergencias`).then( e=> {
-    emergencies.value = e.data
-  })
+import { ref } from 'vue';
+import axios from 'axios';
+import Navbar from '@/components/Navbar.vue';
+import Emergency from '@/components/Emergency.vue';
 
+const email = ref("");
+const emergencies = ref([]);
+const exito = ref("");
 
-  const agregar = (id_emergencia) => {
-    axios.post(`http://localhost:8080/agregar_voluntario_disponible/${id_emergencia}/${email.value}`).then( e=> {
-      console.log(e.data)
-      exito.value = e.data
-  })
-  }
+axios.get(`http://localhost:8080/emergencias_habilidad/getEmergencias`).then(e => {
+  emergencies.value = e.data;
+});
 
-  
-  
+const agregar = (id_emergencia) => {
+  axios.post(`http://localhost:8080/agregar_voluntario_disponible/${id_emergencia}/${email.value}`).then(e => {
+    console.log(e.data);
+    exito.value = e.data;
+  });
+};
 </script>
 
 <template>
-  <main>
-    <header>
-      <h1>
-        Listado de emergencias activas
-      </h1>
-      <h2>
-        Inscríbete como disponible para ayudar
-      </h2>
-    </header>
+  <div>
+    <Navbar />
+    <div class="emergencies-main">
+      <div class="emergencies-content">
+        <header>
+          <h1>Listado de emergencias activas</h1>
+          <h2>Inscríbete como disponible para ayudar</h2>
+        </header>
 
-    <div class="emergency-section">
-      <div class="user-input">
-        <h2>
-          Ingresa tu correo electrónico para inscribirte en emergencias:
-        </h2>
-        <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" name="email" v-model="email">
-      </div>
+        <div class="emergency-section">
+          <div class="user-input">
+            <h2>Ingresa tu correo electrónico para inscribirte en emergencias:</h2>
+            <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" v-model="email">
+          </div>
 
-      <div class="emergencies">
-        <Emergency v-for="e in emergencies" :data="e" @sign-in="n => agregar(n)"></Emergency>
+          <div class="emergencies">
+            <Emergency v-for="e in emergencies" :key="e.id" :data="e" @sign-in="agregar"></Emergency>
+          </div>
+        </div>
+
+        <div v-if="exito" class="mensaje-exito">
+          {{ exito }}
+        </div>
       </div>
     </div>
-
-    <div v-if="exito" class="mensaje-exito">
-        {{ exito }}
-    </div>
-
-
-  </main>
-
+  </div>
 </template>
 
-
 <style scoped>
-main {
-  width: 100vw;
-  height: 100vh;
-  padding-left: 10%;
-  padding-right: 10%;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+.emergencies-main {
+  background-color: #f0f9ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.emergencies-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
 }
 
 header {
-  height: 20%;
-  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.emergency-section {
-  height: 80%;
-  width: 100%;
+h1, h2 {
+  color: #101935;
+  font-family: 'Roboto', sans-serif;
 }
 
 .user-input {
-  height: 20%;
+  margin-bottom: 20px;
+}
+
+.user-input input {
   width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+.user-input input:focus {
+  outline: none;
+  border-color: #9ad4d6;
 }
 
 .emergencies {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  width: 50%;
-  height: 80%;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
 .mensaje-exito {
   color: green;
   background-color: #e8f5e9;
   border-left: 5px solid #4caf50;
   padding: 10px;
-  margin: 10px 0;
+  margin-top: 20px;
+  text-align: center;
 }
-
 </style>
