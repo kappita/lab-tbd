@@ -4,10 +4,8 @@
     <div class="skills-main">
       <div class="skills-content">
         <h1>Agrega tus habilidades aquí</h1>
-        <h2>Ingresa tu correo:</h2>
         <form @submit.prevent="registrarVoluntario">
           <div class="selector-multiple">
-            <input v-model="voluntario.email" placeholder="Email" type="email" required />
             <h1>Ingresa tus habilidades:</h1>
             <label v-for="habilidad in habilidades" :key="habilidad.id" class="habilidad-label">
               <input type="checkbox" :value="habilidad.id" v-model="voluntario.habilidades">
@@ -28,6 +26,7 @@
 import axios from 'axios';
 import { obtenerHabilidades } from './apiService';
 import Navbar from '@/components/Navbar.vue';
+import { userJwt } from '@/store/store';
 
 export default {
   components: {
@@ -57,13 +56,9 @@ export default {
         });
     },
     registrarVoluntario() {
-      if (this.voluntario.habilidades.length === 0) {
-        alert("Por favor, selecciona al menos una habilidad.");
-        return;
-      }
       
       const body = {
-        email: this.voluntario.email,
+        token: userJwt.value,
         ability_ids: this.voluntario.habilidades
       };
 
