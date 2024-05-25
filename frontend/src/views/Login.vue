@@ -22,6 +22,7 @@ import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { userJwt } from '@/store/store';
 
 const usertype = ref(0);
 const email = ref("");
@@ -60,15 +61,24 @@ const sendForm = () => {
   };
 
   if (usertype.value == 1) {
-    console.log("Voluntario")
     axios.post("http://localhost:8080/voluntarios/login", body).then(e => {
       console.log(e.data);
+      if (!e.data.success) {
+        window.alert("Correo o contraseña incorrectas!")
+        return
+      }
+      
+      userJwt.value = e.data.jwt
       router.push('/dashboard');
     });
   }
   if (usertype.value == 2) {
     axios.post("http://localhost:8080/instituciones/login", body).then(e => {
-      console.log(e.data);
+      if (!e.data.success) {
+        window.alert("Correo o contraseña incorrectas!")
+        return
+      }
+      userJwt.value = e.data.jwt
       router.push('/dashboard');
     });
   }
