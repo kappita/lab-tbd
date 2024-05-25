@@ -11,7 +11,7 @@ public class AgregarVoluntarioDisponibleRepositoryImp implements AgregarVoluntar
     @Autowired
     private Sql2o sql2o;
 
-    public void postularComoDisponible(int idEmergencia, String emailVoluntario) {
+    public void postularComoDisponible(Long idEmergencia, String emailVoluntario) {
         try (Connection conn = sql2o.open()) {
             // Obtener el ID del voluntario usando su correo electrónico
             String obtenerIdVoluntarioSql = "SELECT id FROM voluntario WHERE email = :emailVoluntario";

@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import axios from 'axios';
 import Navbar from '@/components/Navbar.vue';
 import Emergency from '@/components/Emergency.vue';
+import { userJwt } from '@/store/store';
 
 const email = ref("");
 const emergencies = ref([]);
@@ -13,7 +14,12 @@ axios.get(`http://localhost:8080/emergencias_habilidad/getEmergencias`).then(e =
 });
 
 const agregar = (id_emergencia) => {
-  axios.post(`http://localhost:8080/agregar_voluntario_disponible/${id_emergencia}/${email.value}`).then(e => {
+  const body = {
+    token: userJwt.value,
+    id_emergencia: id_emergencia
+  }
+  console.log(body)
+  axios.post(`http://localhost:8080/agregar_voluntario_disponible`, body).then(e => {
     console.log(e.data);
     exito.value = e.data;
   });
@@ -37,7 +43,7 @@ const agregar = (id_emergencia) => {
           </div>
 
           <div class="emergencies">
-            <Emergency v-for="e in emergencies" :key="e.id" :data="e" @sign-in="agregar"></Emergency>
+            <Emergency v-for="e in emergencies" :key="e.id" :data="e" @sign-in="n => agregar(n)"></Emergency>
           </div>
         </div>
 
