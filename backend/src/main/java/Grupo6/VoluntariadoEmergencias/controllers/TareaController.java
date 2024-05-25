@@ -1,6 +1,7 @@
 package Grupo6.VoluntariadoEmergencias.controllers;
 
 import Grupo6.VoluntariadoEmergencias.Responses.TareaConHabilidades;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.JWTForm;
 import Grupo6.VoluntariadoEmergencias.entities.TareaEntity;
 
 import Grupo6.VoluntariadoEmergencias.services.TareaService;
@@ -51,9 +52,9 @@ public class TareaController {
         tareaService.deleteTarea(id);
     }
 
-    @GetMapping("tareas/postulables/{email}")
-    public ResponseEntity<List<TareaConHabilidades>> getEligibleTareasByVoluntaryEmail(@PathVariable String email) {
-        List<TareaConHabilidades> tareas = tareaService.findEligibleTareasByVoluntaryEmail(email);
+    @PostMapping("tareas/postulables")
+    public ResponseEntity<List<TareaConHabilidades>> getEligibleTareasByVoluntaryEmail(@RequestBody JWTForm form) {
+        List<TareaConHabilidades> tareas = tareaService.findEligibleTareasByVoluntaryEmail(form);
         return ResponseEntity.ok(tareas);
 
     }

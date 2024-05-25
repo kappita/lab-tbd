@@ -1,9 +1,13 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
 import Grupo6.VoluntariadoEmergencias.Responses.TareaConHabilidades;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.JWTForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 import Grupo6.VoluntariadoEmergencias.entities.TareaEmergenciaEntity;
 import Grupo6.VoluntariadoEmergencias.entities.TareaEntity;
+import Grupo6.VoluntariadoEmergencias.repositories.JWTMiddlewareRepositoryImp;
 import Grupo6.VoluntariadoEmergencias.repositories.TareaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +16,9 @@ import java.util.List;
 
 @Service
 public class TareaService {
+
+    @Autowired
+    private JWTMiddlewareRepositoryImp JWT;
 
     private final TareaRepository tareaRepository;
 
@@ -46,9 +53,13 @@ public class TareaService {
         tareaRepository.delete(id);
     }
 
-    public List<TareaConHabilidades> findEligibleTareasByVoluntaryEmail(String email) {
+    public List<TareaConHabilidades> findEligibleTareasByVoluntaryEmail(JWTForm form) {
+        if (!JWT.validateToken(form.getToken())) {
+            return null;
+        }
+        LoginForm user = JWT.decodeJWT(form.getToken());
         // Se obtienen las tareas con emergencia del voluntario
-        List<TareaEmergenciaEntity> tareasEmergencia = tareaRepository.findEligibleTareasByVoluntaryEmail(email);
+        List<TareaEmergenciaEntity> tareasEmergencia = tareaRepository.findEligibleTareasByVoluntaryEmail(user.getEmail());
 
         List<TareaConHabilidades> tareasConHabilidades = new ArrayList<>();
 

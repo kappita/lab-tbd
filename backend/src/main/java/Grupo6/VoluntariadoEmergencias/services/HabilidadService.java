@@ -1,7 +1,11 @@
 package Grupo6.VoluntariadoEmergencias.services;
 
+import Grupo6.VoluntariadoEmergencias.entities.Forms.JWTForm;
+import Grupo6.VoluntariadoEmergencias.entities.Forms.LoginForm;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.repositories.HabilidadRepository;
+import Grupo6.VoluntariadoEmergencias.repositories.JWTMiddlewareRepositoryImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +15,9 @@ import java.util.List;
 public class HabilidadService {
 
     private final HabilidadRepository habilidadRepository;
+
+    @Autowired
+    private JWTMiddlewareRepositoryImp JWT;
 
     HabilidadService(HabilidadRepository habilidadRepository){
         this.habilidadRepository = habilidadRepository;
@@ -44,8 +51,13 @@ public class HabilidadService {
         habilidadRepository.delete(id);
     }
 
-    public List<HabilidadEntity> getHabilidadByVoluntario(String email) {
-        return habilidadRepository.getByEmailVoluntario(email);
+    public List<HabilidadEntity> getHabilidadByVoluntario(JWTForm form) {
+        if (!JWT.validateToken(form.getToken())) {
+            return null;
+        }
+        LoginForm user = JWT.decodeJWT(form.getToken());
+
+        return habilidadRepository.getByEmailVoluntario(user.getEmail());
     }
 
 }
