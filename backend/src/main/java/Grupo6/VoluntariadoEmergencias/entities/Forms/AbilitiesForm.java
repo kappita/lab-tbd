@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbilitiesForm {
-    private String email;
+    private String token;
     private List<Long> ability_ids;
 
-    public AbilitiesForm(String email, List<Long> ability_ids) {
-        this.email = email;
+    public AbilitiesForm(String token, List<Long> ability_ids) {
+        this.token = token;
         this.ability_ids = ability_ids;
     }
 
-    public String getEmail() {
-        return email;
+    public String getToken() {
+        return token;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public List<Long> getAbility_ids() {
