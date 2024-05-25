@@ -3,25 +3,31 @@ import { ref } from 'vue';
 import axios from 'axios';
 import Navbar from '@/components/Navbar.vue';
 import Tarea from '@/components/Tarea.vue';
+import { userJwt } from '@/store/store';
 
-const email = ref("");
 const habilidades = ref([]);
 const tareas = ref([]);
 
 const buscar = () => {
-  console.log(email.value);
-  axios.get(`http://localhost:8080/tareas/postulables/${email.value}`).then(e => {
+  const body = {
+    token: userJwt.value
+  }
+
+  axios.post(`http://localhost:8080/tareas/postulables`, body).then(e => {
     tareas.value = e.data;
   }).catch(e => {
     console.log(e);
     window.alert("El correo electrónico no existe");
   });
-  axios.get(`http://localhost:8080/habilidades/voluntario/${email.value}`).then(e => {
+  axios.post(`http://localhost:8080/voluntarios/habilidades`, body).then(e => {
     habilidades.value = e.data;
   }).catch(e => {
     console.log(e);
   });
+
 };
+
+buscar();
 </script>
 
 <template>
@@ -31,12 +37,6 @@ const buscar = () => {
       <div class="applications-content">
         <h1>Postulación a tareas</h1>
         <h2>Ve las tareas en las que puedas ayudar con tus habilidades!</h2>
-
-        <div class="buscador">
-          <h2>Ingresa tu correo electrónico para buscar emergencias:</h2>
-          <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" v-model="email">
-          <button @click="buscar" class="btn-search">🔎</button>
-        </div>
 
         <div class="habilidades">
           <h2>Tus habilidades son:</h2>

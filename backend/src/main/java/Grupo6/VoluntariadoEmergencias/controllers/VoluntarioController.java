@@ -7,7 +7,9 @@ import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
 
+import Grupo6.VoluntariadoEmergencias.services.HabilidadService;
 import Grupo6.VoluntariadoEmergencias.services.VoluntarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +19,9 @@ import java.util.List;
 public class VoluntarioController {
 
     private final VoluntarioService voluntarioService;
+
+    @Autowired
+    private HabilidadService habilidadService;
 
     VoluntarioController(VoluntarioService voluntarioService){
         this.voluntarioService = voluntarioService;
@@ -77,6 +82,12 @@ public class VoluntarioController {
     public LoginForm testJWT(@RequestBody JWTForm form){
         return voluntarioService.testJWT(form.getToken());
     }
+
+    @PostMapping("/voluntarios/habilidades")
+    public List<HabilidadEntity> getHabilidades(@RequestBody JWTForm form){
+        return habilidadService.getHabilidadByVoluntario(form);
+    }
+
 
     @PostMapping("/voluntarios/agregarHabilidades")
     public String agregarHabilidades(@RequestBody AbilitiesForm form){

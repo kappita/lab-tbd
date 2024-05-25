@@ -50,8 +50,4 @@ public class HabilidadController {
     }
 
 
-    @GetMapping("/habilidades/voluntario/{email}")
-    public List<HabilidadEntity> getHabilidadByEmail(@PathVariable String email){
-        return habilidadService.getHabilidadByVoluntario(email);
-    }
 }

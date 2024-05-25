@@ -25,6 +25,7 @@ public class VoluntarioService {
     @Autowired
     private HabilidadRepository habilidadRepository;
 
+
     VoluntarioService(VoluntarioRepository voluntarioRepository){
         this.voluntarioRepository = voluntarioRepository;
     }
@@ -90,7 +91,12 @@ public class VoluntarioService {
     VoluntarioHabilidadRepository voluntarioHabilidadRepository;
 
     public String agregarHabilidades(AbilitiesForm form) {
-        VoluntarioEntity vol = voluntarioRepository.getByEmail(form.getEmail());
+        if (!JWT.validateToken(form.getToken()))
+            return null;
+
+        LoginForm user = JWT.decodeJWT(form.getToken());
+
+        VoluntarioEntity vol = voluntarioRepository.getByEmail(user.getEmail());
         if (vol == null) {
             return "El usuario no existe";
         }
