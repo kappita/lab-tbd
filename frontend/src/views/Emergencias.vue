@@ -54,22 +54,33 @@ const agregar = (id_emergencia) => {
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h1{
+  font-weight: bold;
+}
+
 .emergencies-main {
   background-color: #f0f9ff;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
+  padding-top: 80px;
 }
 
 .emergencies-content {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 800px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1200px;
 }
 
 header {
@@ -80,35 +91,25 @@ header {
 h1, h2 {
   color: #101935;
   font-family: 'Roboto', sans-serif;
-}
-
-.user-input {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.user-input input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 1px solid #cccccc;
-}
-
-.user-input input:focus {
-  outline: none;
-  border-color: #9ad4d6;
+.emergency-section {
+  display: flex;
+  justify-content: center;
 }
 
 .emergencies {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .mensaje-exito {
   color: green;
   background-color: #e8f5e9;
-  border-left: 5px solid #4caf50;
+  border-left: 5px solid #564787;
   padding: 10px;
   margin-top: 20px;
   text-align: center;

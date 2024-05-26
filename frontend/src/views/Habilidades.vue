@@ -3,16 +3,18 @@
     <Navbar />
     <div class="skills-main">
       <div class="skills-content">
-        <h1>Agrega tus habilidades aquí</h1>
+        <h1 class="main-title">Agrega tus habilidades aquí</h1>
         <form @submit.prevent="registrarVoluntario">
           <div class="selector-multiple">
-            <h1>Ingresa tus habilidades:</h1>
+            <h2 class="sub-title">Ingresa tus habilidades:</h2>
             <label v-for="habilidad in habilidades" :key="habilidad.id" class="habilidad-label">
               <input type="checkbox" :value="habilidad.id" v-model="voluntario.habilidades">
               {{ habilidad.descripcion }}
             </label>
           </div>
-          <button type="submit" class="btn-registrar">Registrar</button>
+          <div class="btn-container">
+            <button type="submit" class="btn-registrar">Registrar</button>
+          </div>
         </form>
         <div v-if="mensajeExito" class="mensaje-exito">
           {{ mensajeExito }}
@@ -21,6 +23,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -56,7 +59,6 @@ export default {
         });
     },
     registrarVoluntario() {
-      
       const body = {
         token: userJwt.value,
         ability_ids: this.voluntario.habilidades
@@ -88,6 +90,10 @@ export default {
   min-height: 100vh;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 .skills-content {
   background: white;
   padding: 20px;
@@ -97,11 +103,20 @@ export default {
   max-width: 800px;
 }
 
-h1, h2 {
+.main-title {
   color: #101935;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.sub-title {
+  color: #101935;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .selector-multiple {
@@ -111,7 +126,22 @@ h1, h2 {
 }
 
 .habilidad-label {
+  display: flex;
+  align-items: center;
   margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.habilidad-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.habilidad-label input[type="checkbox"]:checked {
+  background-color: #9ad4d6;
+  border-color: #9ad4d6;
 }
 
 input[type="email"] {
@@ -130,6 +160,13 @@ input[type="email"]:focus {
 label {
   color: black;
 }
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .btn-registrar {
   background-color: #9ad4d6;
   color: #101935;
@@ -139,7 +176,6 @@ label {
   text-decoration: none;
   transition: background-color 0.3s, transform 0.2s;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .btn-registrar:hover {
@@ -149,9 +185,9 @@ label {
 }
 
 .mensaje-exito {
-  color: green;
+  color: #564787;
   background-color: #e8f5e9;
-  border-left: 5px solid #4caf50;
+  border-left: 5px solid #564787;
   padding: 10px;
   margin-top: 20px;
   text-align: center;

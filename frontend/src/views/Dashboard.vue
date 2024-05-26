@@ -68,7 +68,7 @@
     justify-content: center;
     padding: 20px;
     background-color: #f9f9f9;
-    min-height: 100vh; /* Full viewport height */
+    min-height: 100vh;
   }
   
   .dashboard-header {
@@ -76,10 +76,11 @@
     margin-bottom: 20px;
   }
   
-  h1 {
+  h1, h2 {
     color: #101935;
     font-family: 'Roboto', sans-serif;
     font-size: 2.5rem;
+    font-weight: bold;
   }
   
   p {
@@ -92,7 +93,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Center align the cards */
+    justify-content: center;
   }
   
   .card {
