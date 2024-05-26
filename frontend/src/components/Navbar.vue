@@ -1,6 +1,6 @@
 <template>
     <nav>
-      <router-link to="/" class="navbar-header">
+      <router-link to="/dashboard" class="navbar-header">
         <img src="@/assets/logo-white.png" alt="Logo" class="navbar-logo">
         <h1 class="navbar-title">PóneleVoluntAPP</h1>
       </router-link>

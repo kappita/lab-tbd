@@ -127,6 +127,9 @@ input[type="email"]:focus {
   border-color: #9ad4d6;
 }
 
+label {
+  color: black;
+}
 .btn-registrar {
   background-color: #9ad4d6;
   color: #101935;

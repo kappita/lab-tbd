@@ -37,11 +37,6 @@ const agregar = (id_emergencia) => {
         </header>
 
         <div class="emergency-section">
-          <div class="user-input">
-            <h2>Ingresa tu correo electrónico para inscribirte en emergencias:</h2>
-            <input placeholder="Correo electrónico. Ej: rene@outlook.my" type="text" v-model="email">
-          </div>
-
           <div class="emergencies">
             <Emergency v-for="e in emergencies" :key="e.id" :data="e" @sign-in="n => agregar(n)"></Emergency>
           </div>

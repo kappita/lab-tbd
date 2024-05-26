@@ -37,4 +37,8 @@
     width: 100%;
   }
 
+  p {
+    color: black;
+  }
+
 </style>

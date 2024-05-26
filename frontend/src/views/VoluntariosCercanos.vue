@@ -7,7 +7,8 @@
           <form @submit.prevent="buscarVoluntarios">
             <div class="form-group">
               <label for="tarea">Selecciona la Tarea:</label>
-              <select v-model="idTarea" required>
+              <select v-model="idTarea" required placeholder="tarea">
+                <option value="" disabled selected hidden>Seleccione una tarea</option>
                 <option v-for="tarea in tareas" :key="tarea.id" :value="tarea.id">
                   {{ tarea.nombre }}
                 </option>
@@ -58,7 +59,7 @@
     */
     methods: {
       fetchTareas() {
-        axios.get("http://localhost:8080/tareas/todas") 
+        axios.get("http://localhost:8080/tareas/getAll") 
           .then(response => {
             this.tareas = response.data;
           })
@@ -67,7 +68,7 @@
           });
       },
       buscarVoluntarios() {
-        axios.get(`http://localhost:8080/tareas/cercanos/${this.idTarea}`, {
+        axios.get(`http://localhost:8080/voluntarios/getByCercania/${this.idTarea}/${this.n}`, {
           params: {
             n: this.n
           }
@@ -86,6 +87,10 @@
   <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+  li {
+    color: black;
+  }
   
   .voluntarios-cercanos-main {
     background-color: #f0f9ff;

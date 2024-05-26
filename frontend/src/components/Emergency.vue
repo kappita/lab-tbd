@@ -32,4 +32,12 @@
   .emergency {
     margin-right: 20px;
   }
+
+  p {
+    color: black;
+  }
+
+  div {
+    color: black;
+  }
 </style>
