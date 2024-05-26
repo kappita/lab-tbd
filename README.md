@@ -36,7 +36,7 @@ El repositorio incluye las siguientes carpetas principales:
 
 1. Clonar el repositorio: Esto proporcionará las tres carpetas principales para el proyecto de Laboratorio. Para clonarlo, se debe usar el siguiente comando en el directorio deseado:
 ```sh
-git clone https://github.com/kappita/lab1-tdb.git
+git clone https://github.com/kappita/lab-tbd
 ```
 2. Instalar PostgreSQL y PGAdmin4: Para ello, se puede instalar un pack en conjunto desde el siguiente [link](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads). Se debe seleccionar la versión deseada para el Sistema Operativo deseado y seguir las instrucciones de instalación. Durante la instalación es necesario configurar un **username** y un **password** para utilizar con PostgreSQL. Estos serán luego necesarios para la creación de la Base de Datos junto con sus tablas.
 **DISCLAIMER: Para poder conectarse a la Base de Datos correctamente, se deben configurar las mismas credenciales que están puestas en [aplication.properties](https://github.com/kappita/lab-tbd/blob/v2.0/backend/src/main/resources/application.properties) en el backend.**
